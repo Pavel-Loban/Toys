@@ -1,0 +1,93 @@
+"use strict"
+const isMobile = {
+    Android: function () {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function () {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function () {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function () {
+        return navigator.userAgent.match(/Opera mini/i);
+    },
+    Windows: function () {
+        return navigator.userAgent.match(/IEModile/i);
+    },
+    any: function () {
+        return (
+            isMobile.Android() ||
+            isMobile.BlackBerry() ||
+            isMobile.iOS() ||
+            isMobile.Opera() ||
+            isMobile.Windows());
+    }
+
+};
+
+if (isMobile.any()) {
+    document.body.classList.add('_touch');
+} else {
+    document.body.classList.add('_pc');
+}
+//---------------меню бургер
+const iconMenu = document.querySelector('.menu__icon');
+const menuBody = document.querySelector('.menu__body');
+if(iconMenu){
+
+    iconMenu.addEventListener('click',function(e){
+        document.body.classList.toggle('_lock');
+        iconMenu.classList.toggle('_active');
+        menuBody.classList.toggle('_active');
+    });
+}
+
+// прокрутка при клике
+const menuContact = document.querySelectorAll('.menu__link[data-scrollto]');
+if (menuContact.length > 0) {
+    menuContact.forEach(link => {
+        link.addEventListener('click', onMenuClick);
+    });
+
+    function onMenuClick(e) {
+        const menuLink = e.target;
+        if (menuLink.dataset.scrollto && document.querySelector(menuLink.dataset.scrollto)) {
+            const gotoLink = document.querySelector(menuLink.dataset.scrollto);
+            const gotoLinkValue = gotoLink.getBoundingClientRect().top + scrollY - document.querySelector('header').offsetHeight;
+
+            if(iconMenu.classList.contains('_active')){
+                document.body.classList.remove('_lock');
+                iconMenu.classList.remove('_active');
+                menuBody.classList.remove('_active');
+            }
+
+            window.scrollTo({
+                top:gotoLinkValue,
+                behavior: 'smooth'
+            });
+            e.preventDefault();
+        }
+    }
+}
+//----------------------------counter goods
+
+window.addEventListener('click', function(e){
+
+    let counter;
+
+    if(e.target.dataset.btn === 'btn-pos' || e.target.dataset.btn === 'btn-neg'){
+        const counterItem = e.target.closest('.item_count');
+        counter = counterItem.querySelector('.item_total');
+    }
+
+    if(e.target.dataset.btn === 'btn-pos'){
+        counter.value++;
+    }
+    if(e.target.dataset.btn === 'btn-neg'){
+        if(counter.value > 1){
+            counter.value--;
+        }
+    }
+});
+
