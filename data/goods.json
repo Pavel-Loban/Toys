@@ -78,17 +78,17 @@
   ],
   "basket": [
     {
-      "title": "Plastic constructor7",
+      "title": "Plastic constructor4",
       "imgSrc": "img/catalog/constructor.jpg",
       "counter": "1",
-      "price": "17$",
+      "price": "13$",
       "id": 1
     },
     {
-      "title": "Plastic constructor2",
+      "counter": "3",
+      "title": "Plastic constructor3",
       "imgSrc": "img/catalog/constructor.jpg",
-      "counter": "6",
-      "price": "11$",
+      "price": "12$",
       "id": 2
     }
   ]

@@ -1,4 +1,9 @@
 "use strict"
+
+const menuContact = document.querySelectorAll('.menu__link[data-scrollto]');
+const iconMenu = document.querySelector('.menu__icon');
+const menuBody = document.querySelector('.menu__body');
+
 const isMobile = {
     Android: function () {
         return navigator.userAgent.match(/Android/i);
@@ -32,8 +37,7 @@ if (isMobile.any()) {
     document.body.classList.add('_pc');
 }
 //---------------меню бургер
-const iconMenu = document.querySelector('.menu__icon');
-const menuBody = document.querySelector('.menu__body');
+
 if(iconMenu){
 
     iconMenu.addEventListener('click',function(e){
@@ -44,7 +48,7 @@ if(iconMenu){
 }
 
 // прокрутка при клике
-const menuContact = document.querySelectorAll('.menu__link[data-scrollto]');
+
 if (menuContact.length > 0) {
     menuContact.forEach(link => {
         link.addEventListener('click', onMenuClick);
@@ -72,8 +76,7 @@ if (menuContact.length > 0) {
 }
 //----------------------------counter goods
 
-window.addEventListener('click', function(e){
-
+const counterGood = ((e) => {
     let counter;
 
     if(e.target.dataset.btn === 'btn-pos' || e.target.dataset.btn === 'btn-neg'){
@@ -90,4 +93,9 @@ window.addEventListener('click', function(e){
         }
     }
 });
+
+
+
+
+
 

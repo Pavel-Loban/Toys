@@ -1,7 +1,16 @@
 .basket_container {
     /* margin: 80px 0px 0px 0px; */
 }
+.container_basket_title{
 
+}
+.basket_title{
+    font-size: 40px;
+    letter-spacing: 0.2px;
+    font-weight: 700;
+    line-height: calc(57/40*100%);
+    color: #252B42;
+}
 
 
 
