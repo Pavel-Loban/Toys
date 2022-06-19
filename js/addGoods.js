@@ -118,15 +118,14 @@ const postData = (e) => {
   if (e.target.classList.contains('item__btn_add')) {
 
     const card = e.target.closest('.catalog__item');
-
-   return fetch(`${BASKET_URL}`, {
+      fetch(`${BASKET_URL}`, {
       method: 'POST',
       body: JSON.stringify({
         "title": card.querySelector('.item_catalog__title').innerText,
         // "id": card.dataset.id,
         "imgSrc": card.querySelector('.product_img').getAttribute('src'),
         "counter": card.querySelector('.item_total').value,
-        "price": card.querySelector('.item_action_text').innerText
+        "price": card.querySelector('.item_action_text').innerText,
       }),
       headers: {
         "Content-type": "application/json; charset=utf-8"

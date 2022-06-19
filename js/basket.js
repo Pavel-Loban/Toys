@@ -1,5 +1,32 @@
 const  basketWrapper = document.querySelector('.basket-wrapper');
 let local = localStorage.getItem('basket-items');
+const btnCheckout = document.querySelector('.title_checkout');
+const btnPlusMinus = document.querySelectorAll('.item__btn ');
+
+
+//----------------hover checkout
+btnCheckout.addEventListener('mousedown', () => {
+  btnCheckout.style.backgroundColor = 'rgb(174, 230, 64)';
+});
+btnCheckout.addEventListener('mouseup', () => {
+  btnCheckout.style.backgroundColor = 'yellowgreen';
+});
+
+//-----------hover plus minus
+basketWrapper.addEventListener('mousedown', (e) => {
+  if(e.target.classList.contains('item__btn') ){
+    e.target.style.backgroundColor = '#c6d9f3';
+  }
+});
+
+basketWrapper.addEventListener('mouseup', (e) => {
+  if(e.target.classList.contains('item__btn')){
+    e.target.style.backgroundColor = '#7baef1';
+  }
+
+});
+
+
 
 // console.log(typeof JSON.parse(JSON.stringify(local)));
 
@@ -89,8 +116,8 @@ basketWrapper.addEventListener('click', putGood);
 const  titleBasket = () => {
   const basketTitle = document.querySelector('.basket_title');
   // const  basketWrapper = document.querySelector('.basket-wrapper');
-  if(true){
-    console.log(basketWrapper.childElementCount)
+  if(basketWrapper.childElementCount=== 0){
+    console.log(basketWrapper.childElementCount);
     basketTitle.innerHTML = 'Cart is empty';
   }
 };

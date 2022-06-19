@@ -87,26 +87,29 @@
                 <div class="basket_item_delet item__basket">remove from cart</div>
               </div>
             </div> -->
-
           </div>
-
-          <!-- Стоимость заказа -->
-          <div class="cart-total">
-            <p><span class="h5">Доставка:</span> <span class="delivery-cost free">бесплатно</span> </p>
-            <p><span class="h5">Итого:</span> <span class="total-price">330</span> <span class="rouble">₽</span></p>
+          <div class="basket_total">
+            <div class="basket_total_elem">
+              <p class="total_text"><span class="h5">Shipping:</span> <span class="delivery_cost free">free </span> </p>
+            </div>
+            <div class="basket_total_elem">
+              <p class="total_text"><span class="h5">Total:</span> <span class="total_price">0</span> <span class="dollar">$</span></p>
+            </div>
           </div>
           <!-- Оформить заказ -->
-          <div id="order-form" class="card-body border-top">
-            <h5 class="card-title">Оформить заказ</h4>
-              <form>
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Ваш номер телефона">
-                </div>
-                <button type="submit" class="btn btn-primary">Заказать</button>
-              </form>
+          <div id="checkout" class="container_checkout">
+            <h4 class="title_checkout">Checkout</h4>
           </div>
         </div>
       </section>
+      <!-- Стоимость заказа -->
+
+      <form>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Ваш номер телефона">
+        </div>
+        <button type="submit" class="btn btn-primary">Заказать</button>
+      </form>
       <!-- <div class="page__mainblock mainblock">
           <div class="mainblock__container _container">
             <div class="mainblock__body">
