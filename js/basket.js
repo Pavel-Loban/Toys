@@ -44,17 +44,21 @@ function render() {
 // setInterval(render, 3000);
 // render();
 
-basketWrapper.addEventListener('click', function (e) {
-   let deletGood = e.target.classList.contains('basket_item_delet');
 
-   if (deletGood) {
-      let good = e.target.closest('.basket-item');
-      good.remove();
 
-      localStorage.setItem('basket-items', basketWrapper.innerHTML);
-   }
+// basketWrapper.addEventListener('click', function (e) {
+//    let deletGood = e.target.classList.contains('basket_item_delet');
 
-});
+//    if (deletGood) {
+//       let good = e.target.closest('.basket-item');
+//       good.remove();
+
+//       localStorage.setItem('basket-items', basketWrapper.innerHTML);
+//    }
+
+// });
+
+
 
 // basketWrapper.addEventListener('click', function (e) {
 
@@ -69,55 +73,14 @@ window.addEventListener('storage', e => {
    // console.log(e.newValue);
 });
 
-const getBasket = () => {
-   fetch(`http://localhost:3000/basket`).then(
-       (res) => {
-         // console.log(res.json());
 
-           return res.json();
-       }
-   ).then(
-       (data) => {
-           // console.log(data);
-         //   const  basketWrapper = document.querySelector('.basket-wrapper');
-           basketWrapper.innerHTML = '';
-
-           data.forEach((good) => {
-            basketWrapper.innerHTML += `<div class="basket-item" data-id="${good.id}">
-             <div class="basket-item__row">
-               <div class="basket_container_img item__basket">
-                 <a href="" class="basket_catalog__image ">
-                   <img class="basket_img" src="${good.imgSrc}" alt="${good.title}" />
-                 </a>
-               </div>
-               <div class="basket-item__title item__basket">${good.title}</div>
-               <div class="item_count flex_center item__basket">
-                 <a class="item__btn item_action_text flex_center" data-btn="btn-neg">-1</a>
-                 <input class="item_total item_action_text" type="text" style="width: 30px;" value="${good.counter}" readonly>
-                 <a class="item__btn item_action_text flex_center" data-btn="btn-pos">+1</a>
-               </div>
-
-               <div class="item_price item__basket">
-                 <span class="item_price item_action_text">
-                 ${good.price}
-                 </span>
-               </div>
-               <div class="basket_item_delet item__basket">remove from cart</div>
-             </div>
-           </div>`;
-           });
-       }
-   ).catch(
-       (err) => {
-           console.log(err);
-
-       }
-   );
- };
 
 //  setInterval(getBasket, 3000)
+//----------вывод товара в корзину
  getBasket();
 
+//---------------удаляю товар
+basketWrapper.addEventListener('click', deleteBasketItem);
 
 
 

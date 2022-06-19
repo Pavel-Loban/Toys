@@ -78,39 +78,18 @@
   ],
   "basket": [
     {
-      "title": "Plastic constructor3",
-      "imgSrc": "img/catalog/constructor.jpg",
-      "counter": "5",
-      "price": "12$",
-      "id": 1
-    },
-    {
-      "title": "Plastic constructor3",
-      "imgSrc": "img/catalog/constructor.jpg",
-      "counter": "1",
-      "price": "12$",
-      "id": 2
-    },
-    {
       "title": "Plastic constructor7",
       "imgSrc": "img/catalog/constructor.jpg",
       "counter": "1",
-      "price": "22$",
-      "id": 3
+      "price": "17$",
+      "id": 1
     },
     {
       "title": "Plastic constructor2",
       "imgSrc": "img/catalog/constructor.jpg",
-      "counter": "7",
+      "counter": "6",
       "price": "11$",
-      "id": 4
-    },
-    {
-      "title": "Plastic constructor6",
-      "imgSrc": "img/catalog/constructor.jpg",
-      "counter": "4",
-      "price": "16$",
-      "id": 5
+      "id": 2
     }
   ]
 }

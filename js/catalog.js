@@ -1,4 +1,4 @@
-
+getTenTaskcs();
 let cartItemHTML = '';
 let loc;
 const dat = [];
@@ -88,7 +88,7 @@ document.querySelector('.catalog_container').addEventListener('click',function(e
       // console.log(cartItemHTML);
 
       card.querySelector('.item_total').value = 1;
-      // dat.push(productInfo);
+
 
 
 
@@ -109,53 +109,14 @@ console.log(dat);
 
 };
 
-// const productInfo = {
-//   id: card.dataset.id,
-//   imgSrc: card.querySelector('.product_img').getAttribute('src') ,
-//   title: card.querySelector('.item_catalog__title').innerText,
-//   counter: card.querySelector('.item_total').value,
-//   price: card.querySelector('.item_action_text').innerText,
-// };
-
-const postData = (e) => {
-
-  if(e.target.classList.contains('item__btn_add')){
-
-    const card = e.target.closest('.catalog__item');
-    // const card =document.querySelector('.catalog__item');
-    // if(card.dataset.id !== undefined){
-    //   card.querySelector('.item_total').value++;
-    // }
-    // console.log(card);
-
-    fetch('http://localhost:3000/basket', {
-      method: 'POST',
-      body: JSON.stringify({
-          "title": card.querySelector('.item_catalog__title').innerText,
-          // "id": card.dataset.id,
-          "imgSrc": card.querySelector('.product_img').getAttribute('src') ,
-          "counter": card.querySelector('.item_total').value,
-          "price": card.querySelector('.item_action_text').innerText
-      }),
-      headers : {
-          "Content-type": "application/json; charset=utf-8"
-      }
-  }).then(
-      res => {
-          return res.json();
-      }
-  ).then(
-      res =>{
-          console.log(res);
-      }
-  )
-
-    }
 
 
-};
 
-document.querySelector('.catalog__body').addEventListener('click',postData);
+document.querySelector('.catalog__body').addEventListener('click',(e) => {
+
+  postData(e);
+  e.preventDefault();
+} );
 
 // document.querySelector('.catalog__body').addEventListener('click',(e) => {
 //   if(e.target.classList.contains('item__btn_add')){
