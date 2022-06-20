@@ -93,16 +93,16 @@
   ],
   "basket": [
     {
+      "counter": "5",
       "title": "Car city",
       "imgSrc": "img/catalog/towncars.jpg",
-      "counter": "1",
       "price": "10$",
       "id": 12
     },
     {
+      "counter": "9",
       "title": "Retro car",
       "imgSrc": "img/catalog/mustang.jpg",
-      "counter": "8",
       "price": "13$",
       "id": 13
     },
@@ -114,9 +114,9 @@
       "id": 14
     },
     {
+      "counter": "8",
       "title": "Retro car",
       "imgSrc": "img/catalog/mustang.jpg",
-      "counter": "6",
       "price": "13$",
       "id": 15
     }

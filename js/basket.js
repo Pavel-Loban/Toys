@@ -26,16 +26,16 @@ const total = () => {
 //----------------hover checkout
 btnCheckout.addEventListener('mousedown', (e) => {
   if(e.target.classList.contains('title_checkout')){
-    hoverBtnDown(e.target);
+    e.target.style.backgroundColor = 'rgb(174, 230, 64)';
   }
 });
 btnCheckout.addEventListener('mouseup', (e) => {
   if(e.target.classList.contains('title_checkout')){
-    hoverBtnUp(e.target);
+    e.target.style.backgroundColor = 'yellowgreen';
   }
 });
 
-//-----------hover plus minus
+// -----------hover plus minus
 basketWrapper.addEventListener('mousedown', hoverBtnMouseDown);
 
 basketWrapper.addEventListener('mouseup', hoverBtnMouseUp);
