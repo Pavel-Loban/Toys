@@ -93,32 +93,18 @@
   ],
   "basket": [
     {
-      "counter": "5",
-      "title": "Car city",
-      "imgSrc": "img/catalog/towncars.jpg",
-      "price": "10$",
-      "id": 12
-    },
-    {
-      "counter": "9",
+      "counter": "7",
       "title": "Retro car",
       "imgSrc": "img/catalog/mustang.jpg",
       "price": "13$",
-      "id": 13
-    },
-    {
-      "title": "Car city",
-      "imgSrc": "img/catalog/towncars.jpg",
-      "counter": "1",
-      "price": "10$",
-      "id": 14
+      "id": 1
     },
     {
       "counter": "8",
       "title": "Retro car",
       "imgSrc": "img/catalog/mustang.jpg",
       "price": "13$",
-      "id": 15
+      "id": 3
     }
   ]
 }

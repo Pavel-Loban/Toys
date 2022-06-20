@@ -208,9 +208,6 @@ const getBasket = () => {
 
 
 
-
-
-
 //--------------удаляю товар из корзины
 
 const deleteBasketItem = (e) => {

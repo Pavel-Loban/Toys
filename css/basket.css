@@ -97,6 +97,9 @@
     align-items:center;
     border-bottom: 3px solid blue;
 }
+@media (max-width:px){
+
+}
 .basket_total_elem {
     flex: 0 1 auto;
 }

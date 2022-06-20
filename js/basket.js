@@ -7,22 +7,26 @@ const cardTotal = document.querySelector('.item_total');
 const cardPrice = document.querySelector('.item_price ');
 
 //------------total price
-const item = document.querySelectorAll('.basket-item');
 const total = () => {
-
-
-
-
-  console.log(item.length);
+  const  basketWrapper = document.querySelector('.basket-wrapper');
+  console.log(basketWrapper.childElementCount);
       // console.log(elem);
+    let result = 0;
+    if(basketWrapper.childElementCount === 0){
+      totalPrice.innerHTML = 0;
+    }else{
+      totalPrice.innerHTML = '';
+      basketWrapper.childNodes.forEach(elem => {
+        const price = parseInt(elem.querySelector('span').innerHTML);
+        const total = parseInt(elem.querySelector('.item_total ').value);
+        console.log(total);
+        result += price*total;
+        totalPrice.innerHTML = result;
+      });
 
-    // if(basketWrapper === ''){
-    //   totalPrice.innerHTML = 20;
-    // }else{
-    //   totalPrice.innerHTML = 100;
-    // }
+    }
   };
-
+  setTimeout(total,1000);
 //----------------hover checkout
 btnCheckout.addEventListener('mousedown', (e) => {
   if(e.target.classList.contains('title_checkout')){
@@ -129,7 +133,6 @@ basketWrapper.addEventListener('click', putGood);
 
 const  titleBasket = () => {
   const basketTitle = document.querySelector('.basket_title');
-  // const  basketWrapper = document.querySelector('.basket-wrapper');
   if(basketWrapper.childElementCount=== 0){
     console.log(basketWrapper.childElementCount);
     basketTitle.innerHTML = 'Cart is empty';
