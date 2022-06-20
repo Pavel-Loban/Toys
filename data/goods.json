@@ -2,108 +2,123 @@
   "data": [
     {
       "id": 1,
-      "title": "Plastic constructor",
+      "title": "Car city",
+      "imgSrc": "img/catalog/towncars.jpg",
       "price": "10$"
     },
     {
       "id": 2,
       "title": "Plastic constructor2",
+      "imgSrc": "img/catalog/constructor.jpg",
       "price": "11$"
     },
     {
       "id": 3,
-      "title": "Plastic constructor3",
+      "title": "Car",
+      "imgSrc": "img/catalog/car.jpg",
       "price": "12$"
     },
     {
       "id": 4,
-      "title": "Plastic constructor4",
+      "title": "Retro car",
+      "imgSrc": "img/catalog/mustang.jpg",
       "price": "13$"
     },
     {
       "id": 5,
-      "title": "Plastic constructor5",
+      "title": "Toy set",
+      "imgSrc": "img/catalog/toyset.jpg",
       "price": "15$"
     },
     {
       "id": 6,
       "title": "Plastic constructor6",
+      "imgSrc": "img/catalog/constructor.jpg",
       "price": "16$"
     },
     {
       "id": 7,
       "title": "Plastic constructor7",
+      "imgSrc": "img/catalog/constructor.jpg",
       "price": "17$"
     },
     {
       "id": 8,
       "title": "Plastic constructor8",
+      "imgSrc": "img/catalog/constructor.jpg",
       "price": "18$"
     },
     {
       "id": 9,
       "title": "Plastic constructor4",
+      "imgSrc": "img/catalog/constructor.jpg",
       "price": "19$"
     },
     {
       "id": 10,
       "title": "Plastic constructor5",
+      "imgSrc": "img/catalog/constructor.jpg",
       "price": "20$"
     },
     {
       "id": 11,
       "title": "Plastic constructor6",
+      "imgSrc": "img/catalog/constructor.jpg",
       "price": "21$"
     },
     {
       "id": 12,
       "title": "Plastic constructor7",
+      "imgSrc": "img/catalog/constructor.jpg",
       "price": "22$"
     },
     {
       "id": 13,
       "title": "Plastic constructor8",
+      "imgSrc": "img/catalog/constructor.jpg",
       "price": "23$"
     },
     {
       "id": 14,
       "title": "Plastic constructor7",
+      "imgSrc": "img/catalog/constructor.jpg",
       "price": "24$"
     },
     {
       "id": 15,
       "title": "Plastic constructor8",
+      "imgSrc": "img/catalog/constructor.jpg",
       "price": "25$"
     }
   ],
   "basket": [
     {
-      "counter": "2",
-      "title": "Plastic constructor3",
-      "imgSrc": "img/catalog/constructor.jpg",
-      "price": "12$",
-      "id": 1
+      "title": "Car city",
+      "imgSrc": "img/catalog/towncars.jpg",
+      "counter": "1",
+      "price": "10$",
+      "id": 12
     },
     {
-      "title": "Plastic constructor7",
-      "imgSrc": "img/catalog/constructor.jpg",
-      "counter": "2",
-      "price": "17$",
-      "id": 2
+      "title": "Retro car",
+      "imgSrc": "img/catalog/mustang.jpg",
+      "counter": "8",
+      "price": "13$",
+      "id": 13
     },
     {
-      "title": "Plastic constructor2",
-      "imgSrc": "img/catalog/constructor.jpg",
-      "counter": "3",
-      "price": "11$",
-      "id": 3
+      "title": "Car city",
+      "imgSrc": "img/catalog/towncars.jpg",
+      "counter": "1",
+      "price": "10$",
+      "id": 14
     },
     {
-      "counter": "2",
-      "title": "Plastic constructor3",
-      "imgSrc": "img/catalog/constructor.jpg",
-      "price": "12$",
-      "id": 4
+      "title": "Retro car",
+      "imgSrc": "img/catalog/mustang.jpg",
+      "counter": "6",
+      "price": "13$",
+      "id": 15
     }
   ]
 }

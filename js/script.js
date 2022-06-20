@@ -4,6 +4,14 @@ const menuContact = document.querySelectorAll('.menu__link[data-scrollto]');
 const iconMenu = document.querySelector('.menu__icon');
 const menuBody = document.querySelector('.menu__body');
 
+const preloader = () => {
+    // document.body.classList.add('loaded_hiding');
+    const pre = document.querySelector('.preloader');
+      pre.classList.toggle('loaded');
+  };
+
+
+
 const isMobile = {
     Android: function () {
         return navigator.userAgent.match(/Android/i);
@@ -93,6 +101,31 @@ const counterGood = ((e) => {
         }
     }
 });
+
+//------------------hover + and -
+const hoverBtnMouseDown = (e) => {
+    if(e.target.classList.contains('item__btn')){
+       e.target.style.backgroundColor = '#c6d9f3';
+    }
+};
+
+const hoverBtnMouseUp = (e) => {
+    if(e.target.classList.contains('item__btn')){
+       e.target.style.backgroundColor = '#7baef1';
+    }
+};
+const hoverBtnDown = (e) => {
+    if(e.target.classList.contains('item__btn_add')){
+        e.target.style.backgroundColor = 'rgb(174, 230, 64)';
+    }
+
+};
+const hoverBtnUp = (e) => {
+    if(e.target.classList.contains('item__btn_add')){
+        e.target.style.backgroundColor = 'yellowgreen';
+    }
+
+};
 
 
 

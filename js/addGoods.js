@@ -21,22 +21,25 @@ const getListGood = async () => {
 // getListGood();
 
 
-//-----------------выводится товар на сраницу
+//-----------------выводится товар на страницу
 const renderListGoods = async () => {
-  const goodsList = await getListGood();
+  preloader();
+  const data = await getResourse(`${CATALOG_URL}`);
+  // const goodsList = await getListGood();
+  // console.log(data);
   const containerGoods = document.querySelector('.catalog__body');
       containerGoods.innerHTML = '';
 
-      goodsList.forEach((good) => {
+      data.forEach((good) => {
         containerGoods.innerHTML += `
               <div class="catalog__column">
               <div class="catalog__item item_catalog" data-id="${good.id}">
-                <a href="" class="item_catalog__image _img">
-                  <img class="product_img" src="img/catalog/constructor.jpg" alt="plastic constructor" />
+                <a href="good.html?id=${good.id}" target="_blank" class="item_catalog__image _img">
+                  <img class="product_img" src="${good.imgSrc}" alt="plastic constructor" />
                 </a>
                 <div class="item_catalog_content">
                   <div class="content">
-                    <a href="" class="item_catalog__link">
+                    <a href="good.html?id=${good.id}" target="_blank" class="item_catalog__link">
                       <h4 class="item_catalog__title">${good.title}</h4></a>
                   </div>
                 </div>
@@ -57,7 +60,7 @@ const renderListGoods = async () => {
             </div>
                 `;
       });
-
+setTimeout(preloader,100);
 };
 
 const getTenTaskcs = () => {
@@ -111,6 +114,15 @@ const getTenTaskcs = () => {
 };
 
 
+const getGoodItem = async (goodId = 1) => {
+  const data = await getResourse(`${CATALOG_URL}`);
+  // console.log(data);
+  const goodItem = data.find(item => item.id === goodId);
+  // console.log(goodItem);
+  return goodItem;
+};
+
+
 
 //----------------сохраняю товар в json, который выбрал пользователь
 const postData = (e) => {
@@ -142,8 +154,11 @@ const postData = (e) => {
   }
 };
 
+
+
 //-------------------вывод выбранного товара в корзину
 const getBasket = () => {
+  preloader();
   fetch(`${BASKET_URL}`).then(
     (res) => {
       // console.log(res.json());
@@ -180,6 +195,7 @@ const getBasket = () => {
             </div>
           </div>`;
       });
+      setTimeout(preloader, 500);
     }
   ).catch(
     (err) => {
@@ -216,13 +232,16 @@ const deleteBasketItem = (e) => {
       }
     );
   }
+
   titleBasket();
+
 };
 
 
 //----------------меняем количество товара и сохраняем
 
 const putGood = (e) => {
+  // preloader();
   counterGood(e);
 
     if(e.target.dataset.btn === 'btn-pos' || e.target.dataset.btn === 'btn-neg'){
@@ -254,6 +273,7 @@ const putGood = (e) => {
         }
     );
   }
+
   };
 
   //----------- title basket

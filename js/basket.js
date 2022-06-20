@@ -2,72 +2,86 @@ const  basketWrapper = document.querySelector('.basket-wrapper');
 let local = localStorage.getItem('basket-items');
 const btnCheckout = document.querySelector('.title_checkout');
 const btnPlusMinus = document.querySelectorAll('.item__btn ');
+const totalPrice = document.querySelector('.total_price');
+const cardTotal = document.querySelector('.item_total');
+const cardPrice = document.querySelector('.item_price ');
 
+//------------total price
+const item = document.querySelectorAll('.basket-item');
+const total = () => {
+
+
+
+
+  console.log(item.length);
+      // console.log(elem);
+
+    // if(basketWrapper === ''){
+    //   totalPrice.innerHTML = 20;
+    // }else{
+    //   totalPrice.innerHTML = 100;
+    // }
+  };
 
 //----------------hover checkout
-btnCheckout.addEventListener('mousedown', () => {
-  btnCheckout.style.backgroundColor = 'rgb(174, 230, 64)';
+btnCheckout.addEventListener('mousedown', (e) => {
+  if(e.target.classList.contains('title_checkout')){
+    hoverBtnDown(e.target);
+  }
 });
-btnCheckout.addEventListener('mouseup', () => {
-  btnCheckout.style.backgroundColor = 'yellowgreen';
+btnCheckout.addEventListener('mouseup', (e) => {
+  if(e.target.classList.contains('title_checkout')){
+    hoverBtnUp(e.target);
+  }
 });
 
 //-----------hover plus minus
-basketWrapper.addEventListener('mousedown', (e) => {
-  if(e.target.classList.contains('item__btn') ){
-    e.target.style.backgroundColor = '#c6d9f3';
-  }
-});
+basketWrapper.addEventListener('mousedown', hoverBtnMouseDown);
 
-basketWrapper.addEventListener('mouseup', (e) => {
-  if(e.target.classList.contains('item__btn')){
-    e.target.style.backgroundColor = '#7baef1';
-  }
-
-});
+basketWrapper.addEventListener('mouseup', hoverBtnMouseUp);
 
 
 
 // console.log(typeof JSON.parse(JSON.stringify(local)));
 
-function render() {
-   if (local !== null) {
-      basketWrapper.innerHTML = '';
-      basketWrapper.insertAdjacentHTML('beforeend', localStorage.getItem('basket-items'));
-   }
-   if (basketWrapper.childElementCount === 0) {
-      // console.log(basketWrapper.childElementCount);
+// function render() {
+//    if (local !== null) {
+//       basketWrapper.innerHTML = '';
+//       basketWrapper.insertAdjacentHTML('beforeend', localStorage.getItem('basket-items'));
+//    }
+//    if (basketWrapper.childElementCount === 0) {
+//       // console.log(basketWrapper.childElementCount);
 
-      basketWrapper.innerHTML = '';
-   }
-   // go.forEach((elem) => {
-   //    basketWrapper.innerHTML = `
-   //    <div class="basket-item" data-id=${elem.id}>
-   //    <div class="basket-item__row">
-   //      <div class="basket_container_img item__basket">
-   //        <a href="" class="basket_catalog__image ">
-   //          <img class="basket_img" src="img/catalog/constructor.jpg" alt="Plastic constructor3" />
-   //        </a>
-   //      </div>
-   //      <div class="basket-item__title item__basket">${elem.title}</div>
-   //      <div class="item_count flex_center item__basket">
-   //        <a class="item__btn item_action_text flex_center" data-btn="btn-neg">-1</a>
-   //        <input class="item_total item_action_text" type="text" style="width: 30px;" value="5" readonly>
-   //        <a class="item__btn item_action_text flex_center" data-btn="btn-pos">+1</a>
-   //      </div>
+//       basketWrapper.innerHTML = '';
+//    }
+//    // go.forEach((elem) => {
+//    //    basketWrapper.innerHTML = `
+//    //    <div class="basket-item" data-id=${elem.id}>
+//    //    <div class="basket-item__row">
+//    //      <div class="basket_container_img item__basket">
+//    //        <a href="" class="basket_catalog__image ">
+//    //          <img class="basket_img" src="img/catalog/constructor.jpg" alt="Plastic constructor3" />
+//    //        </a>
+//    //      </div>
+//    //      <div class="basket-item__title item__basket">${elem.title}</div>
+//    //      <div class="item_count flex_center item__basket">
+//    //        <a class="item__btn item_action_text flex_center" data-btn="btn-neg">-1</a>
+//    //        <input class="item_total item_action_text" type="text" style="width: 30px;" value="5" readonly>
+//    //        <a class="item__btn item_action_text flex_center" data-btn="btn-pos">+1</a>
+//    //      </div>
 
-   //      <div class="item_price item__basket">
-   //        <span class="item_price item_action_text">
-   //        ${elem.price}
-   //        </span>
-   //      </div>
-   //      <div class="basket_item_delet item__basket">remove from cart</div>
-   //    </div>
-   //  </div>
-   //    `;
-   // });
+//    //      <div class="item_price item__basket">
+//    //        <span class="item_price item_action_text">
+//    //        ${elem.price}
+//    //        </span>
+//    //      </div>
+//    //      <div class="basket_item_delet item__basket">remove from cart</div>
+//    //    </div>
+//    //  </div>
+//    //    `;
+//    // });
 
-}
+// }
 // setInterval(render, 3000);
 // render();
 
@@ -95,10 +109,10 @@ function render() {
 //    }
 // });
 
-window.addEventListener('storage', e => {
-   // console.log(e);
-   // console.log(e.newValue);
-});
+// window.addEventListener('storage', e => {
+//    // console.log(e);
+//    // console.log(e.newValue);
+// });
 
 
 
@@ -122,4 +136,5 @@ const  titleBasket = () => {
   }
 };
 basketWrapper.addEventListener('click', titleBasket);
+
 
