@@ -5,9 +5,9 @@ const BASKET_URL = 'http://localhost:3000/basket';
 const getResourse = async(url) => {
   try {
     const res = await fetch(url);
-    return res.json();
+    return await res.json();
   }catch (err) {
-    console.log(err)
+    console.log(err);
     throw new Error(`!!!!!!!!! ${err}`);
 
   }
@@ -21,7 +21,7 @@ const getListGood = async () => {
 // getListGood();
 
 
-//-----------------выводится товар на страницу
+//-----------------выводится товар на  страницу
 const renderListGoods = async () => {
   preloader();
   const data = await getResourse(`${CATALOG_URL}`);
@@ -113,10 +113,11 @@ const getTenTaskcs = () => {
   );
 };
 
-
+//----------отдельная страница товара
 const getGoodItem = async (goodId = 1) => {
   const data = await getResourse(`${CATALOG_URL}`);
   // console.log(data);
+
   const goodItem = data.find(item => item.id === goodId);
   // console.log(goodItem);
   return goodItem;
@@ -128,7 +129,7 @@ const getGoodItem = async (goodId = 1) => {
 const postData = (e) => {
 
   if (e.target.classList.contains('item__btn_add')) {
-
+    // e.preventDefault()
     const card = e.target.closest('.catalog__item');
       fetch(`${BASKET_URL}`, {
       method: 'POST',
@@ -149,6 +150,7 @@ const postData = (e) => {
     ).then(
       res => {
         console.log(res);
+        // alert('s444');
       }
     );
   }
@@ -157,18 +159,15 @@ const postData = (e) => {
 
 
 //-------------------вывод выбранного товара в корзину
-const getBasket = () => {
+const getBasket = async () => {
   preloader();
   fetch(`${BASKET_URL}`).then(
     (res) => {
       // console.log(res.json());
-
       return res.json();
     }
   ).then(
     (data) => {
-      // console.log(data);
-      //   const  basketWrapper = document.querySelector('.basket-wrapper');
       basketWrapper.innerHTML = '';
 
       data.forEach((good) => {
@@ -210,7 +209,7 @@ const getBasket = () => {
 
 //--------------удаляю товар из корзины
 
-const deleteBasketItem = (e) => {
+const deleteBasketItem =  (e) => {
 
   if (e.target.classList.contains('basket_item_delet')) {
     const card = e.target.closest('.basket-item');

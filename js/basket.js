@@ -19,12 +19,13 @@ const total = () => {
       basketWrapper.childNodes.forEach(elem => {
         const price = parseInt(elem.querySelector('span').innerHTML);
         const total = parseInt(elem.querySelector('.item_total ').value);
-        console.log(total);
+        // console.log(total);
         result += price*total;
         totalPrice.innerHTML = result;
       });
 
     }
+    // getBasket();
   };
   setTimeout(total,1000);
 //----------------hover checkout

@@ -20,7 +20,7 @@ const navigation = `
         <a href="index.html" class="menu__link">Home</a>
       </li>
       <li class="menu__item">
-        <a href="catalog.html" class="menu__link">Catalog</a>
+        <a href="catalog.html" target="_blank" class="menu__link">Catalog</a>
       </li>
       <li class="menu__item">
         <a href="" class="menu__link">Pricing</a>
@@ -31,7 +31,7 @@ const navigation = `
         >
       </li>
       <li class="menu__item menu_icon">
-        <a data-tooltip="basket" href="basket.html" class="menu__link"
+        <a data-tooltip="basket" href="basket.html" target="_blank" class="menu__link"
           ><img src="img/basket.svg" alt="" /><span class="amount"
             >0</span
           ></a
