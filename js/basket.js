@@ -9,17 +9,18 @@ const cardPrice = document.querySelector('.item_price ');
 //------------total price
 const total = () => {
   const  basketWrapper = document.querySelector('.basket-wrapper');
-  console.log(basketWrapper.childElementCount);
-      // console.log(elem);
+  const titleBasket = document.querySelector('.basket_title');
     let result = 0;
+
     if(basketWrapper.childElementCount === 0){
       totalPrice.innerHTML = 0;
+      titleBasket.innerHTML = 'Сart is empty';
     }else{
       totalPrice.innerHTML = '';
       basketWrapper.childNodes.forEach(elem => {
         const price = parseInt(elem.querySelector('span').innerHTML);
         const total = parseInt(elem.querySelector('.item_total ').value);
-        // console.log(total);
+
         result += price*total;
         totalPrice.innerHTML = result;
       });
@@ -132,13 +133,6 @@ basketWrapper.addEventListener('click', deleteBasketItem);
 
 basketWrapper.addEventListener('click', putGood);
 
-const  titleBasket = () => {
-  const basketTitle = document.querySelector('.basket_title');
-  if(basketWrapper.childElementCount=== 0){
-    console.log(basketWrapper.childElementCount);
-    basketTitle.innerHTML = 'Cart is empty';
-  }
-};
-basketWrapper.addEventListener('click', titleBasket);
+
 
 

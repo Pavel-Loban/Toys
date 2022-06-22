@@ -252,7 +252,7 @@ body {
     }
 }
 
-@media (max-width:860px) {
+@media (max-width:875px) {
     .header__menu {
         margin: 0px 0px 0px 10px;
     }

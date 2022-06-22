@@ -93,25 +93,25 @@
   ],
   "basket": [
     {
-      "title": "Retro car",
-      "imgSrc": "img/catalog/mustang.jpg",
-      "counter": "1",
-      "price": "13$",
-      "id": 11
+      "counter": "2",
+      "title": "Plastic constructor2",
+      "imgSrc": "img/catalog/constructor.jpg",
+      "price": "11$",
+      "id": 1
     },
     {
-      "title": "Car city",
-      "imgSrc": "img/catalog/towncars.jpg",
-      "counter": "1",
-      "price": "10$",
-      "id": 12
+      "title": "Plastic constructor2",
+      "imgSrc": "img/catalog/constructor.jpg",
+      "counter": "4",
+      "price": "11$",
+      "id": 2
     },
     {
-      "title": "Retro car",
-      "imgSrc": "img/catalog/mustang.jpg",
-      "counter": "6",
-      "price": "13$",
-      "id": 14
+      "title": "Plastic constructor2",
+      "imgSrc": "img/catalog/constructor.jpg",
+      "counter": "104",
+      "price": "11$",
+      "id": 3
     }
   ],
   "messages": [

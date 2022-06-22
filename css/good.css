@@ -9,6 +9,14 @@
 }
 
 
+
+@media (max-width:975px) {
+    body._touch .menu__list>li {
+
+        padding: 0 8px;
+    }
+}
+
 .page_good {
     margin: 80px 0px 20px 0px;
 }

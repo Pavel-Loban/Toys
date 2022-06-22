@@ -130,6 +130,7 @@ const postData = (e) => {
 
   if (e.target.classList.contains('item__btn_add')) {
     // e.preventDefault()
+
     const card = e.target.closest('.catalog__item');
       fetch(`${BASKET_URL}`, {
       method: 'POST',
@@ -154,9 +155,25 @@ const postData = (e) => {
       }
     );
   }
+
 };
 
-
+const getCountProductsBasket = async () => {
+  const data = await getResourse(`${BASKET_URL}`);
+  const countBasketNavbar = document.querySelector('.amount');
+  let counter = 0;
+  if(data.length < 1){
+    countBasketNavbar.classList.add('_none');
+  }else{
+    countBasketNavbar.classList.remove('_none');
+    data.forEach((elem) => {
+      counter += Number(elem.counter);
+    });
+    countBasketNavbar.innerHTML = counter;
+    countBasketNavbar.style.color = 'yellowgreen';
+  }
+};
+setTimeout(getCountProductsBasket,1000);
 
 //-------------------вывод выбранного товара в корзину
 const getBasket = async () => {
@@ -169,7 +186,6 @@ const getBasket = async () => {
   ).then(
     (data) => {
       basketWrapper.innerHTML = '';
-
       data.forEach((good) => {
         basketWrapper.innerHTML += `<div class="basket-item" data-id="${good.id}">
             <div class="basket-item__row">
@@ -199,9 +215,10 @@ const getBasket = async () => {
   ).catch(
     (err) => {
       console.log(err);
-
     }
   );
+
+
 };
 
 

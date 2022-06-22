@@ -10,6 +10,7 @@ document.querySelector('.catalog__body').addEventListener('click', counterGood);
 document.querySelector('.catalog__body').addEventListener('click',(e) => {
   // e.preventDefault();
   postData(e);
+
   // e.stopPropagation();
 
 } );

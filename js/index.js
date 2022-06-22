@@ -33,7 +33,7 @@ const navigation = `
       <li class="menu__item menu_icon">
         <a data-tooltip="basket" href="basket.html" target="_blank" class="menu__link"
           ><img src="img/basket.svg" alt="" /><span class="amount"
-            >0</span
+            ></span
           ></a
         >
       </li>
@@ -132,3 +132,4 @@ const footerHtml = `
 </div>
 `;
 footer.innerHTML += footerHtml;
+

@@ -35,7 +35,7 @@ document.querySelector('.item_action').addEventListener('mouseup', hoverBtnUp);
 
 
 
-
+//-------------------review------------
  let input = document.querySelector('.user_name');
  let text = document.querySelector('.input_review');
 class Review {
@@ -88,7 +88,7 @@ class Review {
   };
 
 
-
+//----------------
   const renderMessages = async () => {
     const messages = await getResourse(`${MESSAGE_URI}`);
     const containerMessages = document.querySelector('.message_container');
@@ -131,14 +131,8 @@ class Review {
 });
 
 
+//--------------navbar count basket---
 
-// getResourse('data/goods.json').then((data) => console.log(data));
 
 
-// {
-//   "id": 1,
-//   "title": "Car city",
-//   "imgSrc": "img/catalog/towncars.jpg",
-//   "price": "10$",
-//   "messages": []
-// }
+
