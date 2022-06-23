@@ -1,27 +1,81 @@
+const moreImg = document.querySelector('.more_img');
+const headerTitle = document.querySelector('.header_block_title');
+const good = document.querySelector('.good__item');
+const imgGood = document.querySelector('.product_img');
+const titleGood = document.querySelector('.item_good__title');
+const priceGood = document.querySelector('.item_price');
 
 const renderMoreInfoGood = async () => {
     preloader();
     const itemId = Number(window.location.search.split('?id=')[1]);
 
     const goodItem = await getGoodItem(itemId);
-    // console.log(goodItem);
-    const headerTitle = document.querySelector('.header_block_title');
-    const good = document.querySelector('.good__item');
-    const imgGood = document.querySelector('.product_img');
-    const titleGood = document.querySelector('.item_good__title');
-    const priceGood = document.querySelector('.item_price');
+
     headerTitle.innerHTML = goodItem.title;
     good.dataset.id = goodItem.id;
-    imgGood.src = goodItem.imgSrc;
+    imgGood.style.background = `url(${goodItem.imgSrc}) no-repeat`;
+    imgGood.style.height = '100%';
+    imgGood.style.width = '100%';
+    imgGood.style.backgroundPosition = 'center';
+    imgGood.style.backgroundSize = 'cover';
     titleGood.innerHTML = goodItem.title;
     imgGood.alt = goodItem.title;
     priceGood.innerHTML = goodItem.price;
+
+    goodItem.moreImage.forEach((img,index) => {
+      if(index === 0){
+        moreImg.innerHTML += `
+      <div class="image _img active-image"><img src=${img} alt="example"></div>
+      `;
+      }else
+      moreImg.innerHTML += `
+      <div class="image _img"><img src=${img} alt="example"></div>
+      `;
+    });
+
     // console.log(itemId);
     setTimeout(preloader, 500);
 };
 renderMoreInfoGood();
 
 
+moreImg.addEventListener('click', (e) => {
+  let images = document.querySelectorAll('.image');
+
+  if(e.target.parentElement.classList.contains('image')){
+    imgGood.style.background = `url(${e.target.src}) no-repeat`;
+    imgGood.style.height = '100%';
+    imgGood.style.width = '100%';
+    imgGood.style.backgroundPosition = 'center';
+    imgGood.style.backgroundSize = 'cover';
+    images.forEach((elem) => {
+      elem.classList.remove('active-image');
+    });
+    e.target.parentElement.classList.add('active-image');
+  }
+});
+
+let bg = document.querySelector('.item_good__image ');
+
+let fog1 = document.querySelector('.mouse-parallax-fog-1');
+let fog2 = document.querySelector('.mouse-parallax-fog-2');
+bg.addEventListener('mousemove', function(e) {
+    let x = e.clientX / window.innerWidth;
+    let y = e.clientY / window.innerHeight;
+    imgGood.style.height = '300%';
+    imgGood.style.width = '300%';
+    imgGood.style.transform = 'translate(-' + x * 100 + '%, -' + y * 90 + '%)';
+});
+
+bg.addEventListener('mouseout', function(e) {
+  imgGood.style.height = '100%';
+  imgGood.style.width = '100%';
+  imgGood.style.backgroundPosition = 'center';
+    imgGood.style.backgroundSize = 'cover';
+    let x = e.clientX / window.innerWidth;
+    let y = e.clientY / window.innerHeight;
+  imgGood.style.transform = 'translate(-' + x * 0 + 'px, -' + y * 0 + 'px)';
+});
 
 
 

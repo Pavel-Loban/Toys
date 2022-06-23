@@ -79,6 +79,7 @@
     text-align: center;
 }
 .item_total {
+    flex-wrap: wrap;
 }
 .item_price {
 }

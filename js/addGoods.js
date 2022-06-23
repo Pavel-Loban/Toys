@@ -190,9 +190,9 @@ const getBasket = async () => {
         basketWrapper.innerHTML += `<div class="basket-item" data-id="${good.id}">
             <div class="basket-item__row">
               <div class="basket_container_img item__basket">
-                <a href="" class="basket_catalog__image ">
+                <div href="" class="basket_catalog__image ">
                   <img class="basket_img" src="${good.imgSrc}" alt="${good.title}" />
-                </a>
+                </div>
               </div>
               <div class="basket-item__title item__basket">${good.title}</div>
               <div class="item_count flex_center item__basket">
@@ -245,9 +245,7 @@ const deleteBasketItem =  (e) => {
       }
     );
   }
-
-  titleBasket();
-
+  // titleBasket();
 };
 
 
