@@ -277,6 +277,7 @@ width: 50px;
 border-radius: 5px;
 height: 40px;
 margin-bottom: 3px;
+cursor: pointer;
 }
 @media (max-width:676px){
   .review_text_button{

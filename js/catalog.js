@@ -57,12 +57,15 @@ modalInput.addEventListener('keydown', (e) => {
     if ((e.keyCode < 48 || e.keyCode > 57) && (e.keyCode < 96 || e.keyCode > 105)) {
       e.preventDefault();
     }
-    if (e.keyCode === 8) {
-      console.log('dfgvdsfv');
-
-    }
   }
+});
 
+document.querySelector('.modal_send').addEventListener('mousedown', () => {
+  document.querySelector('.modal_send').style.background = 'rgb(174, 230, 64)';
+});
+
+document.querySelector('.modal_send').addEventListener('mouseup', () => {
+  document.querySelector('.modal_send').style.background = 'yellowgreen';
 });
 
 
@@ -112,7 +115,7 @@ const sortCatalogDesc = () => {
 
 document.querySelector('#btn_price_high').addEventListener('click', sortCatalog);
 document.querySelector('#btn_price_smoll').addEventListener('click', sortCatalogDesc);
-// document.querySelector('#btn3').addEventListener('click',);
+
 
 const insertAfter = (elem, refElem) => {
   return refElem.parentElement.insertBefore(elem, refElem.nextSibling);
@@ -156,13 +159,12 @@ inputSearch.addEventListener('input', () => {
   nameGoods.forEach((elem) => {
 
 
-    if(!(elem.innerHTML.toLocaleLowerCase().includes(inputSearch.value.toLocaleLowerCase())) && inputSearch.value !== ''){
+    if (!(elem.innerHTML.toLocaleLowerCase().includes(inputSearch.value.toLocaleLowerCase())) && inputSearch.value !== '') {
       elem.closest('.catalog__column').classList.add('hidd');
       elem.closest('.catalog__column').classList.add('_none');
-    }else{
+    } else {
       elem.closest('.catalog__column').classList.remove('_none');
     }
 
   });
 });
-
