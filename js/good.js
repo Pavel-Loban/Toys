@@ -185,8 +185,19 @@ class Review {
 });
 
 
-//--------------navbar count basket---
+//--------------hover submit---
 
+const hoverSubmitDown = (e) => {
+  if(e.target.classList.contains('btn_review')){
+      e.target.style.backgroundColor = 'rgb(174, 230, 64)';
+  }
 
+};
+const hoverSubmitUp = (e) => {
+  if(e.target.classList.contains('btn_review')){
+      e.target.style.backgroundColor = 'yellowgreen';
+  }
 
-
+};
+document.querySelector('.button_container').addEventListener('mousedown',hoverSubmitDown);
+document.querySelector('.button_container').addEventListener('mouseup',hoverSubmitUp);

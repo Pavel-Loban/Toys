@@ -284,7 +284,8 @@ margin-bottom: 3px;
   }
   .btn_review {
     flex: 0 1 100%;
-
+    font-size: 17px;
+    font-weight: 700;
 }
 .button_container {
     padding: 20px 0px 0px 0px;
@@ -292,10 +293,7 @@ margin-bottom: 3px;
 .user_name{
    width: 100%;
 }
-.button_text {
-    font-size: 17px;
-    font-weight: 700;
-}
+
 .container_review {
     padding: 0px 0px 15px 0px;
 
