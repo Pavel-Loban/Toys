@@ -180,29 +180,7 @@
       ]
     }
   ],
-  "basket": [
-    {
-      "title": "Car",
-      "imgSrc": "img/catalog/car.jpg",
-      "counter": "42",
-      "price": "12$",
-      "id": 1
-    },
-    {
-      "counter": "70",
-      "title": "Retro car",
-      "imgSrc": "img/catalog/mustang.jpg",
-      "price": "13$",
-      "id": 2
-    },
-    {
-      "title": "Plastic constructor8",
-      "imgSrc": "img/catalog/constructor.jpg",
-      "counter": "1",
-      "price": "25$",
-      "id": 3
-    }
-  ],
+  "basket": [],
   "messages": [
     {
       "message": {

@@ -2,11 +2,11 @@ const CATALOG_URL = 'http://localhost:3000/data';
 const BASKET_URL = 'http://localhost:3000/basket';
 
 
-const getResourse = async(url) => {
+const getResourse = async (url) => {
   try {
     const res = await fetch(url);
     return await res.json();
-  }catch (err) {
+  } catch (err) {
     console.log(err);
     throw new Error(`!!!!!!!!! ${err}`);
 
@@ -28,10 +28,10 @@ const renderListGoods = async () => {
   // const goodsList = await getListGood();
   // console.log(data);
   const containerGoods = document.querySelector('.catalog__body');
-      containerGoods.innerHTML = '';
+  containerGoods.innerHTML = '';
 
-      data.forEach((good) => {
-        containerGoods.innerHTML += `
+  data.forEach((good) => {
+    containerGoods.innerHTML += `
               <div class="catalog__column">
               <div class="catalog__item item_catalog" data-id="${good.id}">
                 <a href="good.html?id=${good.id}" target="_blank" class="item_catalog__image _img">
@@ -59,8 +59,8 @@ const renderListGoods = async () => {
               </div>
             </div>
                 `;
-      });
-setTimeout(preloader,100);
+  });
+  setTimeout(preloader, 100);
 };
 
 const getTenTaskcs = () => {
@@ -124,56 +124,93 @@ const getGoodItem = async (goodId = 1) => {
 };
 
 
+let goodss = localStorage.getItem('goods');
+let arr = JSON.parse(goodss) ||[];
 
-//----------------сохраняю товар в json, который выбрал пользователь
+
+//----------------сохраняю товар в json и localStorage, который выбрал пользователь
 const postData = (e) => {
-
-  if (e.target.classList.contains('item__btn_add')) {
+  console.log(arr);
+  // if (e.target.classList.contains('item__btn_add')) {
     // e.preventDefault()
-
     const card = e.target.closest('.catalog__item');
-      fetch(`${BASKET_URL}`, {
-      method: 'POST',
-      body: JSON.stringify({
-        "title": card.querySelector('.item_catalog__title').innerText,
-        // "id": card.dataset.id,
-        "imgSrc": card.querySelector('.product_img').getAttribute('src'),
-        "counter": card.querySelector('.item_total').value,
-        "price": card.querySelector('.item_action_text').innerText,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=utf-8"
-      }
-    }).then(
-      res => {
-        return res.json();
-      }
-    ).then(
-      res => {
-        console.log(res);
-        // alert('s444');
-      }
-    );
-  }
+    const countGood = card.querySelector('.item_total ');
 
+    let good = {
+      "title": card.querySelector('.item_catalog__title').innerText,
+      "id": card.dataset.id,
+      "imgSrc": card.querySelector('.product_img').getAttribute('src'),
+      "counter": card.querySelector('.item_total').value,
+      "price": card.querySelector('.item_action_text').innerText,
+    };
+
+    arr.push(good);
+
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = i + 1; j < arr.length; j++) {
+        if (arr[j] !== undefined && arr[i].title === arr[j].title) {
+          arr[i].counter = +arr[i].counter + (+arr[j].counter);
+          arr.splice([j], 1);
+        }
+      }
+    }
+    countGood.value = 1;
+    // arr += good
+    // console.log(arr);
+
+
+
+    //   fetch(`${BASKET_URL}`, {
+    //     method: 'POST',
+    //     body: JSON.stringify({
+    //       "title": card.querySelector('.item_catalog__title').innerText,
+    //       // "id": card.dataset.id,
+    //       "imgSrc": card.querySelector('.product_img').getAttribute('src'),
+    //       "counter": card.querySelector('.item_total').value,
+    //       "price": card.querySelector('.item_action_text').innerText,
+    //     }),
+    //     headers: {
+    //       "Content-type": "application/json; charset=utf-8"
+    //     }
+    //   }).then(
+    //     res => {
+    //       return res.json();
+    //     }
+    //   ).then(
+    //     res => {
+    //       console.log(res);
+    //       // alert('s444');
+    //     }
+    //   );
+  // }
+
+  localStorage.setItem('goods',JSON.stringify(arr));
 };
+
+
+
+
 
 const getCountProductsBasket = async () => {
-  const data = await getResourse(`${BASKET_URL}`);
-  const countBasketNavbar = document.querySelector('.amount');
-  let counter = 0;
-  if(data.length < 1){
-    countBasketNavbar.classList.add('_none');
-  }else{
-    countBasketNavbar.classList.remove('_none');
-    data.forEach((elem) => {
-      counter += Number(elem.counter);
-    });
-    countBasketNavbar.innerHTML = counter;
-    countBasketNavbar.style.color = 'yellowgreen';
+  try {
+    const data = await getResourse(`${BASKET_URL}`);
+    const countBasketNavbar = document.querySelector('.amount');
+    let counter = 0;
+    if (data.length < 1) {
+      countBasketNavbar.classList.add('_none');
+    } else {
+      countBasketNavbar.classList.remove('_none');
+      data.forEach((elem) => {
+        counter += Number(elem.counter);
+      });
+      countBasketNavbar.innerHTML = counter;
+      countBasketNavbar.style.color = 'yellowgreen';
+    }
+  } catch (err) {
+    console.log('Error!!!!!', err);
   }
 };
-setTimeout(getCountProductsBasket,1000);
+setTimeout(getCountProductsBasket, 1000);
 
 //-------------------вывод выбранного товара в корзину
 const getBasket = async () => {
@@ -200,7 +237,6 @@ const getBasket = async () => {
                 <input class="item_total item_action_text" type="text" style="width: 30px;" value="${good.counter}" readonly>
                 <a class="item__btn item_action_text flex_center" data-btn="btn-pos">+1</a>
               </div>
-
               <div class="item_price item__basket">
                 <span class="item_price item_action_text">
                 ${good.price}
@@ -226,26 +262,27 @@ const getBasket = async () => {
 
 //--------------удаляю товар из корзины
 
-const deleteBasketItem =  (e) => {
+const deleteBasketItem = (e) => {
 
-  if (e.target.classList.contains('basket_item_delet')) {
-    const card = e.target.closest('.basket-item');
-    const idGood = card.dataset['id'];
-    fetch(`${BASKET_URL}/${idGood}`, {
-      method: 'DELETE'
-    }).then(
-      res => {
-        // console.log(res.json());
 
-        return res.json();
-      }
-    ).then(
-      data => {
-        // console.log('DELETE:', data);
-      }
-    );
-  }
-  // titleBasket();
+
+
+  // if (e.target.classList.contains('basket_item_delet')) {
+  //   const card = e.target.closest('.basket-item');
+  //   const idGood = card.dataset['id'];
+  //   fetch(`${BASKET_URL}/${idGood}`, {
+  //     method: 'DELETE'
+  //   }).then(
+  //     res => {
+  //       // console.log(res.json());
+  //       return res.json();
+  //     }
+  //   ).then(
+  //     data => {
+  //       // console.log('DELETE:', data);
+  //     }
+  //   );
+  // }
 };
 
 
@@ -255,43 +292,36 @@ const putGood = (e) => {
   // preloader();
   counterGood(e);
 
-    if(e.target.dataset.btn === 'btn-pos' || e.target.dataset.btn === 'btn-neg'){
-      const counterItem = e.target.closest('.item_count');
-      const card = e.target.closest('.basket-item');
-      const idGood = card.dataset['id'];
-      const counter = counterItem.querySelector('.item_total').value;
-      console.log(counter);
+  if (e.target.dataset.btn === 'btn-pos' || e.target.dataset.btn === 'btn-neg') {
+    const counterItem = e.target.closest('.item_count');
+    const card = e.target.closest('.basket-item');
+    const idGood = card.dataset['id'];
+    const counter = counterItem.querySelector('.item_total').value;
+    console.log(counter);
 
-      fetch(`${BASKET_URL}/${idGood}`, {
-        method: 'PUT',
-        body: JSON.stringify({
-            "counter": counter,
-            "title": card.querySelector('.basket-item__title').innerText,
-            // "id": card.dataset.id,
-            "imgSrc": card.querySelector('.basket_img').getAttribute('src'),
-            "price": card.querySelector('.item_price').innerText
-        }),
-        headers : {
-            "Content-type": "application/json; charset=utf-8"
-        }
+    fetch(`${BASKET_URL}/${idGood}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        "counter": counter,
+        "title": card.querySelector('.basket-item__title').innerText,
+        // "id": card.dataset.id,
+        "imgSrc": card.querySelector('.basket_img').getAttribute('src'),
+        "price": card.querySelector('.item_price').innerText
+      }),
+      headers: {
+        "Content-type": "application/json; charset=utf-8"
+      }
     }).then(
-        res => {
-            return res.json();
-        }
+      res => {
+        return res.json();
+      }
     ).then(
-        data =>{
-            console.log('PUT:', data);
-        }
+      data => {
+        console.log('PUT:', data);
+      }
     );
   }
 
-  };
+};
 
-  //----------- title basket
-
-
-
-
-
-
-
+//----------- title basket
