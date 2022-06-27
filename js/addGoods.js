@@ -124,93 +124,144 @@ const getGoodItem = async (goodId = 1) => {
 };
 
 
-let goodss = localStorage.getItem('goods');
-let arr = JSON.parse(goodss) ||[];
+// let goodss = localStorage.getItem('goods');
+let arr = JSON.parse(localStorage.getItem('goods')) || [];
 
 
 //----------------сохраняю товар в json и localStorage, который выбрал пользователь
 const postData = (e) => {
+  console.log('postData');
+  if (localStorage.getItem('goods') !== null) {
+    arr = JSON.parse(localStorage.getItem('goods'));
+  }
   console.log(arr);
-  // if (e.target.classList.contains('item__btn_add')) {
-    // e.preventDefault()
-    const card = e.target.closest('.catalog__item');
-    const countGood = card.querySelector('.item_total ');
+  const card = e.target.closest('.catalog__item');
+  const countGood = card.querySelector('.item_total ');
 
-    let good = {
-      "title": card.querySelector('.item_catalog__title').innerText,
-      "id": card.dataset.id,
-      "imgSrc": card.querySelector('.product_img').getAttribute('src'),
-      "counter": card.querySelector('.item_total').value,
-      "price": card.querySelector('.item_action_text').innerText,
-    };
+  let good = {
+    "title": card.querySelector('.item_catalog__title').innerText,
+    "id": card.dataset.id,
+    "imgSrc": card.querySelector('.product_img').getAttribute('src'),
+    "counter": card.querySelector('.item_total').value,
+    "price": card.querySelector('.item_action_text').innerText,
+  };
 
-    arr.push(good);
+  arr.push(good);
 
-    for (let i = 0; i < arr.length; i++) {
-      for (let j = i + 1; j < arr.length; j++) {
-        if (arr[j] !== undefined && arr[i].title === arr[j].title) {
-          arr[i].counter = +arr[i].counter + (+arr[j].counter);
-          arr.splice([j], 1);
-        }
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] !== undefined && arr[i].title === arr[j].title) {
+        arr[i].counter = +arr[i].counter + (+arr[j].counter);
+        arr.splice([j], 1);
       }
     }
-    countGood.value = 1;
-    // arr += good
-    // console.log(arr);
+  }
+  countGood.value = 1;
+  // arr += good
+  // console.log(arr);
 
 
 
-    //   fetch(`${BASKET_URL}`, {
-    //     method: 'POST',
-    //     body: JSON.stringify({
-    //       "title": card.querySelector('.item_catalog__title').innerText,
-    //       // "id": card.dataset.id,
-    //       "imgSrc": card.querySelector('.product_img').getAttribute('src'),
-    //       "counter": card.querySelector('.item_total').value,
-    //       "price": card.querySelector('.item_action_text').innerText,
-    //     }),
-    //     headers: {
-    //       "Content-type": "application/json; charset=utf-8"
-    //     }
-    //   }).then(
-    //     res => {
-    //       return res.json();
-    //     }
-    //   ).then(
-    //     res => {
-    //       console.log(res);
-    //       // alert('s444');
-    //     }
-    //   );
+  //   fetch(`${BASKET_URL}`, {
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       "title": card.querySelector('.item_catalog__title').innerText,
+  //       // "id": card.dataset.id,
+  //       "imgSrc": card.querySelector('.product_img').getAttribute('src'),
+  //       "counter": card.querySelector('.item_total').value,
+  //       "price": card.querySelector('.item_action_text').innerText,
+  //     }),
+  //     headers: {
+  //       "Content-type": "application/json; charset=utf-8"
+  //     }
+  //   }).then(
+  //     res => {
+  //       return res.json();
+  //     }
+  //   ).then(
+  //     res => {
+  //       console.log(res);
+  //       // alert('s444');
+  //     }
+  //   );
   // }
 
-  localStorage.setItem('goods',JSON.stringify(arr));
+  localStorage.setItem('goods', JSON.stringify(arr));
 };
 
+const postBasket = (() => {
+
+  [...basketWrapper.children].forEach((elem) => {
+
+    fetch(`${BASKET_URL}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        "title": elem.querySelector('.basket-item__title').innerText,
+        "imgSrc": elem.querySelector('.basket_img').getAttribute('src'),
+        "counter": elem.querySelector('.item_total').value,
+        "price": elem.querySelector('.item_price ').innerText,
+        "number": elem.dataset.id
+      }),
+      headers: {
+        "Content-type": "application/json; charset=utf-8"
+      }
+    }).then(
+      res => {
+        return res.json();
+      }
+    ).then(
+      res => {
+        console.log(res);
+      }
+    );
+  });
+});
 
 
+//-------------count goods navbar
 
+const getCountProductsBasket = () => {
+  // try {
+  //   const data = await getResourse(`${BASKET_URL}`);
+  //   const countBasketNavbar = document.querySelector('.amount');
+  //   let counter = 0;
+  //   if (data.length < 1) {
+  //     countBasketNavbar.classList.add('_none');
+  //   } else {
+  //     countBasketNavbar.classList.remove('_none');
+  //     data.forEach((elem) => {
+  //       counter += Number(elem.counter);
+  //     });
+  //     countBasketNavbar.innerHTML = counter;
+  //     countBasketNavbar.style.color = 'yellowgreen';
+  //   }
+  // } catch (err) {
+  //   console.log('Error!!!!!', err);
+  // }
+  const countBasketNavbar = document.querySelector('.amount');
+  if (JSON.parse(localStorage.getItem('goods')).length === 0) {
+    countBasketNavbar.classList.add('_none');
+  }
 
-const getCountProductsBasket = async () => {
-  try {
-    const data = await getResourse(`${BASKET_URL}`);
-    const countBasketNavbar = document.querySelector('.amount');
-    let counter = 0;
-    if (data.length < 1) {
-      countBasketNavbar.classList.add('_none');
-    } else {
-      countBasketNavbar.classList.remove('_none');
-      data.forEach((elem) => {
-        counter += Number(elem.counter);
-      });
-      countBasketNavbar.innerHTML = counter;
-      countBasketNavbar.style.color = 'yellowgreen';
-    }
-  } catch (err) {
-    console.log('Error!!!!!', err);
+  let resultGoods = 0;
+
+  if (JSON.parse(localStorage.getItem('goods') !== null)) {
+    JSON.parse(localStorage.getItem('goods')).forEach((elem) => {
+
+      if (JSON.parse(localStorage.getItem('goods')).length < 1) {
+        countBasketNavbar.classList.add('_none');
+
+      } else {
+        countBasketNavbar.classList.remove('_none');
+        resultGoods += +elem.counter;
+        countBasketNavbar.innerHTML = resultGoods;
+        countBasketNavbar.style.color = 'yellowgreen';
+      }
+    });
   }
 };
-setTimeout(getCountProductsBasket, 1000);
+
+setInterval(getCountProductsBasket, 1000);
 
 //-------------------вывод выбранного товара в корзину
 const getBasket = async () => {
@@ -253,8 +304,6 @@ const getBasket = async () => {
       console.log(err);
     }
   );
-
-
 };
 
 
