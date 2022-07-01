@@ -20,7 +20,7 @@ const total = () => {
     totalPrice.innerHTML = '';
     [...basketWrapper.children].forEach((elem) => {
       const total = +elem.querySelector('.item_total').value;
-      const price = parseInt(elem.querySelector('span').innerHTML);
+      const price = parseFloat(elem.querySelector('span').innerHTML);
       result += price * total;
       totalPrice.innerHTML = result;
     });
