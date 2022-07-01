@@ -7,6 +7,9 @@ const cardTotal = document.querySelector('.item_total');
 const cardPrice = document.querySelector('.item_price ');
 preloader();
 setTimeout(preloader, 1000);
+if(basketWrapper.innerHTML === ''){
+
+}
 //------------total price
 const total = () => {
   const basketWrapper = document.querySelector('.basket-wrapper');
@@ -38,7 +41,7 @@ const titleBasket = () => {
     titleBasket.innerHTML = 'Сart is empty';
   }
 };
-setInterval(titleBasket, 3000);
+setInterval(titleBasket, 1000);
 
 const reSaveGoods = ((e) => {
 
@@ -51,7 +54,6 @@ const reSaveGoods = ((e) => {
       arr.forEach(elem => {
         if (elem.title === title) {
           elem.counter = +elem.counter;
-          console.log(elem.counter, elem.title);
 
           elem.counter = count;
         }
@@ -123,15 +125,19 @@ setInterval(renderGoods, 2000);
 
 //---------- проверка колва товара в локал и на странице
 const getQuantityOfgoods = () => {
-  if (goodss !== null) {
-    if (JSON.parse(localStorage.getItem('goods')).length !== arr.length) {
-      renderGoods();
-      console.log('rendergoods');
-
-    }
+  // if (goodss !== null) {
+  //   if (JSON.parse(localStorage.getItem('goods')).length !== arr.length) {
+  //     renderGoods();
+  //     console.log('rendergoods');
+  //   }
+  // }
+  if(basketWrapper.childElementCount === 0){
+    document.querySelector('.title_checkout').classList.add('_none');
+  }else{
+    document.querySelector('.title_checkout').classList.remove('_none');
   }
 };
-// setInterval(getQuantityOfgoods, 1500);
+const intervalGetQuantityOfgoods = setInterval(getQuantityOfgoods, 1000);
 
 
 
@@ -165,8 +171,16 @@ const titleContainerBasket = document.querySelector('.basket_title');
 
 document.querySelector('.title_checkout').addEventListener('click', () => {
   // postBasket();
+  clearInterval(intervalGetQuantityOfgoods);
+  header.classList.add('_none');
   titleContainerBasket.classList.add('_none');
   basketWrapper.classList.add('_none');
   footer.classList.add('_none');
   document.querySelector('.title_checkout').classList.add('_none');
+  document.querySelector('#checkout').classList.add('_none');
+  document.querySelector('.form_body').classList.remove('_none');
+  document.querySelector('.form').style.opacity = 1;
+
 });
+
+

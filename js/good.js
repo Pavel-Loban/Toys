@@ -13,7 +13,7 @@ const renderMoreInfoGood = async () => {
 
     headerTitle.innerHTML = goodItem.title;
     good.dataset.id = goodItem.id;
-    imgGood.style.background = `url(${goodItem.imgSrc}) no-repeat`;
+    imgGood.style.background = `url(${goodItem.img_src}) no-repeat`;
     imgGood.style.height = '100%';
     imgGood.style.width = '100%';
     imgGood.style.backgroundPosition = 'center';
@@ -22,7 +22,7 @@ const renderMoreInfoGood = async () => {
     imgGood.alt = goodItem.title;
     priceGood.innerHTML = goodItem.price;
 
-    goodItem.moreImage.forEach((img,index) => {
+    goodItem.more_image.forEach((img,index) => {
       if(index === 0){
         moreImg.innerHTML += `
       <div class="image _img active-image"><img src=${img} alt="example"></div>
@@ -110,15 +110,17 @@ class Review {
   const itemId = Number(window.location.search.split('?id=')[1]);
 
 
-  const getinfo = async () => {
-
+  const getinfo = async (e) => {
+    e.preventDefault();
     const newReview = new Review (nameUser.value.trim().replace(/\s+/g, ' '),textUser.value.trim().replace(/\s+/g, ' '),itemId);
     const currentDate = new Date();
     const timeNow = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
     const dateNow =  `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`;
-    // const data = await getResourse(`${MESSAGE_URI}`);
+
 
     if(nameUser.value.trim() !== '' && textUser.value.trim() !== ''){
+      e.preventDefault();
+
       fetch(`${MESSAGE_URI}`, {
         method: 'POST',
         body: JSON.stringify({
@@ -135,15 +137,35 @@ class Review {
         }
       ).then(
         res => {
-          console.log(res);
+          // console.log(res);
         }
       );
     }
   };
 
 
+
+
+//   const postResource = async (url, sendData) =>{
+//     const options = {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json;charset=utf-8'
+//         },
+//         body: JSON.stringify(sendData)
+//     };
+
+//     const res = await fetch(url, options);
+
+//     if(!res.ok){
+//         throw new Error(`Error code/// ${res.status}`);
+//     }
+
+//     return res.json();
+// };
 //----------------
-  const renderMessages = async () => {
+  const renderMessages = async (e) => {
+
     const messages = await getResourse(`${MESSAGE_URI}`);
     const containerMessages = document.querySelector('.message_container');
     containerMessages.innerHTML = '';
@@ -169,20 +191,38 @@ class Review {
         `;
       }
     });
+    // e.preventDefault();
   };
   renderMessages();
 
 
-  document.querySelector('.btn_review').addEventListener('click', function() {
-    getinfo();
-    renderMessages();
+
+
+  document.querySelector('.btn_review').addEventListener('click', function(e) {
+
+    e.preventDefault();
+
+    getinfo(e);
+    renderMessages(e);
   });
 
   document.forms[0].addEventListener('submit',(e) => {
-    // console.log('sdfg');
-    // alert('sdfsd');
+
     e.preventDefault();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //--------------hover submit---
@@ -199,5 +239,6 @@ const hoverSubmitUp = (e) => {
   }
 
 };
+
 document.querySelector('.button_container').addEventListener('mousedown',hoverSubmitDown);
 document.querySelector('.button_container').addEventListener('mouseup',hoverSubmitUp);
