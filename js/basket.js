@@ -1,3 +1,4 @@
+preloader();
 const basketWrapper = document.querySelector('.basket-wrapper');
 // let local = localStorage.getItem('basket-items');
 const btnCheckout = document.querySelector('.title_checkout');
@@ -5,11 +6,9 @@ const btnPlusMinus = document.querySelectorAll('.item__btn ');
 const totalPrice = document.querySelector('.total_price');
 const cardTotal = document.querySelector('.item_total');
 const cardPrice = document.querySelector('.item_price ');
-preloader();
-setTimeout(preloader, 1000);
-if(basketWrapper.innerHTML === ''){
 
-}
+setTimeout(preloader, 1000);
+
 //------------total price
 const total = () => {
   const basketWrapper = document.querySelector('.basket-wrapper');
@@ -26,11 +25,7 @@ const total = () => {
     });
   } else {
     totalPrice.innerHTML = 0;
-
   }
-  // getBasket();
-  // console.log(goodss);
-
 };
 setInterval(total, 500);
 

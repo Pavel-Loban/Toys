@@ -180,57 +180,93 @@
       ]
     }
   ],
-  "basket": [],
-  "messages": [
+  "basket": [
     {
-      "message": {
-        "selector1": "df",
-        "selector2": "dsf",
-        "countId": 4
-      },
-      "time": "17:23",
-      "date": "2022-6-30",
+      "goods": [
+        [
+          {
+            "title": "Plastic constructor2",
+            "id": "2",
+            "imgSrc": "img/catalog/constructor.jpg",
+            "counter": "1",
+            "price": "11$"
+          }
+        ]
+      ],
+      "totalPrice": "11",
+      "locality": "asd",
+      "street": "sdf",
+      "House": "ghkghj",
+      "Ent": "",
+      "Floor": "",
+      "Name": "",
+      "Surname": "",
+      "email": "",
+      "Phone ": "loban_pasha@mail.ru",
+      "Payment ": "324",
       "id": 1
     },
     {
-      "message": {
-        "selector1": "asdf",
-        "selector2": "argaerg",
-        "countId": 4
-      },
-      "time": "17:25",
-      "date": "2022-6-30",
+      "goods": [
+        [
+          {
+            "title": "Plastic constructor2",
+            "id": "2",
+            "imgSrc": "img/catalog/constructor.jpg",
+            "counter": "1",
+            "price": "11$"
+          }
+        ]
+      ],
+      "totalPrice": "11",
+      "locality": "sert",
+      "street": "srg",
+      "House": "srg",
+      "Ent": "",
+      "Floor": "",
+      "Name": "",
+      "Surname": "",
+      "email": "",
+      "Phone ": "loban_pasha@mail.ru",
+      "Payment ": "324",
       "id": 2
     },
     {
-      "message": {
-        "selector1": "hfgfgfghfg",
-        "selector2": "dfgdf",
-        "countId": 4
-      },
-      "time": "17:26",
-      "date": "2022-6-30",
+      "goods": [
+        [
+          {
+            "title": "Retro car",
+            "id": "4",
+            "imgSrc": "img/catalog/mustang.jpg",
+            "counter": "1",
+            "price": "21$"
+          }
+        ]
+      ],
+      "totalPrice": "21",
+      "locality": "arg",
+      "street": "sdf",
+      "House": "ghkghj",
+      "Ent": "",
+      "Floor": "",
+      "Name": "",
+      "Surname": "",
+      "email": "",
+      "Phone ": "loban_pasha@mail.ru",
+      "Payment ": "324",
       "id": 3
-    },
+    }
+  ],
+  "messages": [
     {
       "message": {
-        "selector1": "1",
-        "selector2": "2",
+        "selector1": "Pasha",
+        "selector2": "privet",
         "countId": 4
       },
-      "time": "23:25",
-      "date": "2022-6-30",
-      "id": 4
-    },
-    {
-      "message": {
-        "selector1": "2",
-        "selector2": "23",
-        "countId": 4
-      },
-      "time": "23:30",
-      "date": "2022-6-30",
-      "id": 5
+      "time": "21:32",
+      "date": "2022-7-4",
+      "id": 1
     }
   ]
 }

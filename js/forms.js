@@ -1,132 +1,148 @@
 
-
-
-// const form = () => {
-//     const formBascet = document.getElementById('form');
-//     const inputs = document.querySelectorAll('input');
-
-//     const message = {
-//         loading: 'Загрузка...',
-//         success: 'Спасибо!',
-//         failure: 'Что-то не так...'
-//     };
-
-//     const postData = async (url, data) => {
-//         document.querySelector('.status').innerHTML = message.loading;
-//         let res = await  fetch(url,{
-//             method: "POST",
-//             body:data
-//         });
-
-//         return await res.text();
-//     };
-
-//     const clearInputs = () => {
-//         inputs.forEach((item) => {
-//             item.value = '';
-//         });
-//     };
-
-//     formBascet.addEventListener('submit', (e) => {
-//         e.preventDefault();
-
-//         let statusMessage = document.createElement('div');
-//         statusMessage.classList.add('status');
-//         formBascet.appendChild(statusMessage);
-
-//         const formData = new FormData(formBascet);
-
-//         postData(`${BASKET_URL}`,formData).then(
-//             res => {
-//                 console.log(res);
-//                 statusMessage.innerHTML = message.success;
-//             }).catch(() => {
-//                 statusMessage.innerHTML = message.failure;
-
-//             }).finally(() => {
-//                 clearInputs();
-//                 setTimeout(() => {
-//                     statusMessage.remove();
-//                 }, 5000);
-//             });
-//     });
-// };
-// window.addEventListener('DOMContentLoaded', () => {
-//     "use strict";
-//     // form();
-// });
-
-// export default form;
-
-
-document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('form');
-    const inputs = form.querySelectorAll('input');
-    form.addEventListener('submit', formSend);
+    const btnForm = document.querySelector('.form__button');
+    let inputReq = document.querySelectorAll('._req');
+    const inputEmail = document.querySelector('._email');
+    const inputPhone = document.querySelector('.phone');
+    const BASKET_URI = 'http://localhost:3000/basket';
 
-    async function formSend(e) {
+    const postOrder = async (e) => {
+        e.preventDefault()
+        const totalPrice = document.querySelector('.total_price').innerHTML;
+        const arrayGoodsOrder =[JSON.parse(localStorage.getItem('goods'))];
+        const input = form.querySelectorAll('.form_input');
+        // console.log(input);
+        await fetch(`${BASKET_URI}`, {
+            method: 'POST',
+            body: JSON.stringify({
+              "goods":  arrayGoodsOrder,
+              "totalPrice": totalPrice,
+              "locality": input[0].value,
+              "street": input[1].value,
+              "House": input[2].value,
+              "Ent": input[3].value,
+              "Floor": input[4].value,
+              "Name": input[5].value,
+              "Surname": input[6].value,
+              "email": input[7].value,
+              "Phone ": input[8].value,
+              "Payment ": input[9].value
+            }),
+            headers: {
+              "Content-type": "application/json; charset=utf-8"
+            }
+          }).then(
+            res => {
+              return res.json();
+            }
+          ).then(
+            res => {
+            //   console.log(e)
+        });
+        e.preventDefault()
+    };
+
+
+
+    form.addEventListener('click', (e) => {
+        if(e.target.classList.contains('_req')){
+            e.target.addEventListener('blur',function(){
+                if(e.target.value.trim() === '' ){
+                    e.target.classList.add('_error');
+                }else{
+                    e.target.classList.remove('_error');
+                }
+            });
+        }
+    });
+
+    const validEmail = ((email) => {
+        return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(email);
+    });
+    const validPhone = ((phone) => {
+        return !/^[0-9\s]*$/.test(phone);
+    });
+
+
+
+    form.addEventListener('submit',  ((e) => {
         e.preventDefault();
-        console.log(inputs[3].value);
-        // let error = formValidate(form);
-    }
+        let emailVal = inputEmail.value;
+        let phoneVal = inputPhone.value;
 
-
-    const postData = async (url, data) => {
-
-                let res = await  fetch(url,{
-                    method: "POST",
-                    body:data
-                });
-
-                return await res.json();
-            };
-
-
+        let error = 0;
+        inputReq.forEach((elem) => {
+            if (elem.value === ''){
+                elem.classList.add('_error');
+                error++;
+                console.log(error);
+            }  else{
+                elem.classList.remove('_error');
+            }
+        });
 
 
 
-    // function formValidate(form) {
-    //     let error = 0;
-    //     let formReq = document.querySelectorAll('._req');
+        if(validEmail(emailVal) ){
+            inputEmail.classList.add('_error');
+            error++;
+                console.log(error);
+        }else{
+            inputEmail.classList.remove('_error');
+        }
 
-    //     for (let index = 0; index < formReq.length; index++) {
-    //         const input = formReq[index];
-    //         // formRemoveError(input);
+        if(validPhone(phoneVal) || phoneVal === ''){
+            inputPhone.classList.add('_error');
+            error++;
+                console.log(error);
+        }else{
+            inputPhone.classList.remove('_error');
+        }
 
-    //         if(input.classList.contains('_email')){
-    //             if(emailTest(input)){
-    //                 formAddError(input);
-    //                 error++;
-    //             }
-    //         }else{
-    //             if(input.value === ''){
-    //                 formAddError(input);
-    //                 error++;
-    //                 console.log(error,input.parentElement);
-    //             }
-    //         }
-    //     }
+
+
+        const ser = () => {
+            console.log('hello');
+        }
+        const pp = () => {
+            form.querySelectorAll('.form_input').forEach((elem) => {
+                console.log(elem.value);
+                elem.value = '';
+                console.log(elem.value);
+            });
+
+        };
+
+
+        if(error === 0){
+
+            postOrder(e);
+
+            localStorage.setItem('post', 'ttt')
+            localStorage.removeItem('goods');
+
+            pp();
+           
+        }
+
+    }));
+
+    // if(localStorage.getItem('post') === 'ttt'){
+    //     document.querySelector('.showme').classList.add('hideme');
     // }
 
-    // function formAddError (input) {
-    //     // input.parentElement.classlist.add('_error');
-    //     if(input.value === '')
-    //     input.classlist.add('_error');
-    // }
-    // function formRemoveError (input)  {
-    //     // input.parentElement.classlist.remove('_error');
-    //     input.classlist.remove('_error');
-    // }
-
-    function emailTest (input) {
-        return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value);
-    }
-});
-// const btnForm = document.querySelector('.form__button');
 
 
-// btnForm.addEventListener('submit',((e) => {
-//     e.preventDefault();
 
 
-// }));
+
+
+
+
+
+
+
+
+
+
+

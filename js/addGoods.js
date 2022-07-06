@@ -3,6 +3,7 @@ const BASKET_URL = 'http://localhost:3000/basket';
 const CATALOG_URL = 'https://toys-goods.herokuapp.com/api/good';
 
 const getResourse = async (url) => {
+
   try {
     const res = await fetch(url);
     return await res.json();
@@ -11,6 +12,7 @@ const getResourse = async (url) => {
     throw new Error(`!!!!!!!!! ${err}`);
 
   }
+
 };
 
 const getListGood = async () => {

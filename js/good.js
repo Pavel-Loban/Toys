@@ -33,7 +33,6 @@ const renderMoreInfoGood = async () => {
       `;
     });
 
-    // console.log(itemId);
     setTimeout(preloader, 500);
 };
 renderMoreInfoGood();
@@ -78,10 +77,9 @@ bg.addEventListener('mouseout', function(e) {
 });
 
 
-
-
 document.querySelector('.item_action').addEventListener('click', counterGood);
 document.querySelector('.item_action').addEventListener('mousedown', hoverBtnMouseDown);
+
 document.querySelector('.item_action').addEventListener('mouseup', hoverBtnMouseUp);
 
 document.querySelector('.item_action').addEventListener('mousedown', hoverBtnDown);
@@ -101,7 +99,8 @@ class Review {
     }
   }
 
-  const MESSAGE_URI = 'http://localhost:3000/messages';
+  // const MESSAGE_URI = 'http://localhost:3000/messages/';
+  const MESSAGE_URI = 'https://toys-goods.herokuapp.com/api/messages';
 
   let contentMessage = document.querySelector('.message-content');
   let contentUserName = document.querySelector('h5');
@@ -110,8 +109,9 @@ class Review {
   const itemId = Number(window.location.search.split('?id=')[1]);
 
 
-  const getinfo = async (e) => {
-    e.preventDefault();
+  const getinfo = async (event) => {
+    event.preventDefault();
+    event.stopPropagation()
     const newReview = new Review (nameUser.value.trim().replace(/\s+/g, ' '),textUser.value.trim().replace(/\s+/g, ' '),itemId);
     const currentDate = new Date();
     const timeNow = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
@@ -119,27 +119,32 @@ class Review {
 
 
     if(nameUser.value.trim() !== '' && textUser.value.trim() !== ''){
-      e.preventDefault();
+      event.preventDefault();
 
-      fetch(`${MESSAGE_URI}`, {
+       await fetch(`${MESSAGE_URI}`, {
         method: 'POST',
+        headers: {
+          "Content-type": "application/json; charset=utf-8",
+          // "Content-type": "application/x-www-form-urlencoded",
+        },
         body: JSON.stringify({
-          "message":  newReview,
+          "selector1":  newReview.selector1,
+          "selector2":  newReview.selector2,
+          "countid": newReview.countId,
           "time": timeNow,
           "date": dateNow
-        }),
-        headers: {
-          "Content-type": "application/json; charset=utf-8"
-        }
-      }).then(
+        })
+
+      })
+      .then(
         res => {
+          console.log(newReview.selector1)
+          alert('ggg')
           return res.json();
         }
-      ).then(
-        res => {
-          // console.log(res);
-        }
-      );
+      ).catch(err => {
+          return ('!!Error', err);
+        });
     }
   };
 
@@ -164,19 +169,18 @@ class Review {
 //     return res.json();
 // };
 //----------------
-  const renderMessages = async (e) => {
-
+  const renderMessages = async () => {
     const messages = await getResourse(`${MESSAGE_URI}`);
     const containerMessages = document.querySelector('.message_container');
     containerMessages.innerHTML = '';
 
     messages.reverse().forEach((elem) => {
       if(elem.message.countId === itemId){
+
         containerMessages.innerHTML += `
         <div class="message-item">
         <div class="message-avatar">
             <figure class="avatar">
-                <img src="" class="rounded-circle" alt="image">
             </figure>
             <div>
                 <h5> ${elem.message.selector1}</h5>
@@ -191,37 +195,32 @@ class Review {
         `;
       }
     });
-    // e.preventDefault();
   };
   renderMessages();
 
 
 
+// const formReviwe = document.querySelector('.form_review');
 
-  document.querySelector('.btn_review').addEventListener('click', function(e) {
+//   document.querySelector('.btn_review').addEventListener('click', function(e) {
 
-    e.preventDefault();
+//     e.preventDefault();
 
-    getinfo(e);
-    renderMessages(e);
+//     getinfo(e);
+//     renderMessages();
+//   });
+
+  document.querySelector('.form_review').addEventListener('submit', function(event) {
+    "use strict"
+    event.preventDefault();
+    // event.stopPropagation()
+    console.log('ggg');
+
+    getinfo(event);
+    input.value = '';
+    text.value = '';
+    renderMessages();
   });
-
-  document.forms[0].addEventListener('submit',(e) => {
-
-    e.preventDefault();
-});
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -237,7 +236,6 @@ const hoverSubmitUp = (e) => {
   if(e.target.classList.contains('btn_review')){
       e.target.style.backgroundColor = 'yellowgreen';
   }
-
 };
 
 document.querySelector('.button_container').addEventListener('mousedown',hoverSubmitDown);

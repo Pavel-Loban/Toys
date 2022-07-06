@@ -133,3 +133,6 @@ const footerHtml = `
 `;
 footer.innerHTML += footerHtml;
 
+if(localStorage.getItem('post') === 'ttt'){
+  document.querySelector('.showme').classList.add('hideme');
+}
