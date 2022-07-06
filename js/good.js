@@ -130,7 +130,7 @@ class Review {
         body: JSON.stringify({
           "selector1":  newReview.selector1,
           "selector2":  newReview.selector2,
-          "countid": itemId,
+          "countId": newReview.itemId,
           "timemessage": timeNow,
           "datemessage": dateNow
         })
@@ -174,7 +174,7 @@ class Review {
     containerMessages.innerHTML = '';
 
     messages.reverse().forEach((elem) => {
-      if(elem.countid === itemId){
+      if(elem.countId === itemId){
 
         containerMessages.innerHTML += `
         <div class="message-item">
