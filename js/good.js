@@ -111,7 +111,6 @@ class Review {
 
   const getinfo = async (event) => {
     event.preventDefault();
-    // event.stopPropagation()
     const newReview = new Review (nameUser.value.trim().replace(/\s+/g, ' '),textUser.value.trim().replace(/\s+/g, ' '),itemId);
     const currentDate = new Date();
     const timeNow = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
