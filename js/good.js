@@ -138,7 +138,7 @@ class Review {
       })
       .then(
         res => {
-          console.log( itemId)
+          console.log( newReview.itemId, typeof newReview.itemId)
           return res.json();
         }
       ).catch(err => {
