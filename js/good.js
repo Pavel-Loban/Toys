@@ -174,7 +174,7 @@ class Review {
     containerMessages.innerHTML = '';
 
     messages.reverse().forEach((elem) => {
-      if(elem.countId === itemId){
+      if(elem.countid === itemId){
 
         containerMessages.innerHTML += `
         <div class="message-item">
