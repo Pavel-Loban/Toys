@@ -183,8 +183,8 @@ class Review {
             </figure>
             <div>
                 <h5> ${elem.selector1}</h5>
-                <div class="date">${elem.date}</div>
-                <div class="time">${elem.time}</div>
+                <div class="date">${elem.datemessage}</div>
+                <div class="time">${elem.timemessage}</div>
             </div>
         </div>
         <div class="message-content">
