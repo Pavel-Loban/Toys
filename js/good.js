@@ -137,7 +137,7 @@ class Review {
       })
       .then(
         res => {
-          console.log( newReview.itemId, typeof newReview.itemId)
+          console.log(newReview.itemId, typeof newReview.itemId)
           return res.json();
         }
       ).catch(err => {
@@ -169,6 +169,7 @@ class Review {
 //----------------
   const renderMessages = async () => {
     const messages = await getResourse(`${MESSAGE_URI}`);
+    console.log(messages);
     const containerMessages = document.querySelector('.message_container');
     containerMessages.innerHTML = '';
 
