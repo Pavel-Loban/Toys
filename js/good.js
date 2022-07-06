@@ -95,7 +95,7 @@ class Review {
 
       this.selector1 = selector1;
       this.selector2 = selector2;
-      this.countId = countId;
+      this.countid = countid;
     }
   }
 
@@ -129,7 +129,7 @@ class Review {
         body: JSON.stringify({
           "selector1":  newReview.selector1,
           "selector2":  newReview.selector2,
-          "countid": itemId,
+          "countid": newReview.countid,
           "timemessage": timeNow,
           "datemessage": dateNow
         })
@@ -137,7 +137,7 @@ class Review {
       })
       .then(
         res => {
-          console.log(newReview.itemId, typeof newReview.itemId)
+          console.log(newReview.itemId, typeof newReview.itemId,itemId,  newReview.countid)
           return res.json();
         }
       ).catch(err => {
