@@ -110,7 +110,7 @@ class Review {
 
 
   const getinfo = async (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     const newReview = new Review (nameUser.value.trim().replace(/\s+/g, ' '),textUser.value.trim().replace(/\s+/g, ' '),itemId);
     const currentDate = new Date();
     const timeNow = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
@@ -118,13 +118,12 @@ class Review {
 
 
     if(nameUser.value.trim() !== '' && textUser.value.trim() !== ''){
-      event.preventDefault();
+      // event.preventDefault();
 
        await fetch(`${MESSAGE_URI}`, {
         method: 'POST',
         headers: {
           "Content-type": "application/json; charset=utf-8",
-          // "Content-type": "application/x-www-form-urlencoded",
         },
         body: JSON.stringify({
           "selector1":  newReview.selector1,
@@ -137,7 +136,6 @@ class Review {
       })
       .then(
         res => {
-          console.log(newReview.itemId, typeof newReview.itemId, itemId,  newReview.countid)
           return res.json();
         }
       ).catch(err => {
@@ -149,23 +147,6 @@ class Review {
 
 
 
-//   const postResource = async (url, sendData) =>{
-//     const options = {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json;charset=utf-8'
-//         },
-//         body: JSON.stringify(sendData)
-//     };
-
-//     const res = await fetch(url, options);
-
-//     if(!res.ok){
-//         throw new Error(`Error code/// ${res.status}`);
-//     }
-
-//     return res.json();
-// };
 //----------------
   const renderMessages = async () => {
     const messages = await getResourse(`${MESSAGE_URI}`);
@@ -199,23 +180,13 @@ class Review {
 
 
 
-// const formReviwe = document.querySelector('.form_review');
 
-//   document.querySelector('.btn_review').addEventListener('click', function(e) {
-
-//     e.preventDefault();
-
-//     getinfo(e);
-//     renderMessages();
-//   });
 
   document.querySelector('.form_review').addEventListener('submit', function(event) {
     "use strict"
     event.preventDefault();
-    // event.stopPropagation()
-    // console.log('ggg');
 
-    getinfo(event);
+    getinfo();
     input.value = '';
     text.value = '';
     renderMessages();
