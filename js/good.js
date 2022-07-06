@@ -138,6 +138,7 @@ class Review {
       })
       .then(
         res => {
+          console.log( itemId)
           return res.json();
         }
       ).catch(err => {
@@ -212,7 +213,7 @@ class Review {
     "use strict"
     event.preventDefault();
     // event.stopPropagation()
-    console.log('ggg');
+    // console.log('ggg');
 
     getinfo(event);
     input.value = '';
