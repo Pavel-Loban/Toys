@@ -129,7 +129,7 @@ class Review {
         body: JSON.stringify({
           "selector1":  newReview.selector1,
           "selector2":  newReview.selector2,
-          "countid": newReview.itemId,
+          "countid": itemId,
           "timemessage": timeNow,
           "datemessage": dateNow
         })
