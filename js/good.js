@@ -111,7 +111,7 @@ class Review {
 
   const getinfo = async (event) => {
     event.preventDefault();
-    event.stopPropagation()
+    // event.stopPropagation()
     const newReview = new Review (nameUser.value.trim().replace(/\s+/g, ' '),textUser.value.trim().replace(/\s+/g, ' '),itemId);
     const currentDate = new Date();
     const timeNow = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
@@ -130,16 +130,14 @@ class Review {
         body: JSON.stringify({
           "selector1":  newReview.selector1,
           "selector2":  newReview.selector2,
-          "countid": newReview.countId,
-          "time": timeNow,
-          "date": dateNow
+          "countid": itemId,
+          "timemessage": timeNow,
+          "datemessage": dateNow
         })
 
       })
       .then(
         res => {
-          console.log(newReview.selector1)
-          alert('ggg')
           return res.json();
         }
       ).catch(err => {
