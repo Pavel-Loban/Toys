@@ -142,6 +142,7 @@ class Review {
           return ('!!Error', err);
         });
     }
+    renderMessages();
   };
 
 
@@ -150,7 +151,6 @@ class Review {
 //----------------
   const renderMessages = async () => {
     const messages = await getResourse(`${MESSAGE_URI}`);
-    console.log(messages);
     const containerMessages = document.querySelector('.message_container');
     containerMessages.innerHTML = '';
 
@@ -189,7 +189,7 @@ class Review {
     getinfo();
     input.value = '';
     text.value = '';
-    renderMessages();
+
   });
 
 
