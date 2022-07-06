@@ -91,7 +91,7 @@ document.querySelector('.item_action').addEventListener('mouseup', hoverBtnUp);
  let input = document.querySelector('.user_name');
  let text = document.querySelector('.input_review');
 class Review {
-    constructor(selector1,selector2,countId){
+    constructor(selector1,selector2,countid){
 
       this.selector1 = selector1;
       this.selector2 = selector2;
