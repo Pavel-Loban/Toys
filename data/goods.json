@@ -258,15 +258,6 @@
     }
   ],
   "messages": [
-    {
-      "message": {
-        "selector1": "Pasha",
-        "selector2": "privet",
-        "countId": 4
-      },
-      "time": "21:32",
-      "date": "2022-7-4",
-      "id": 1
-    }
+
   ]
 }

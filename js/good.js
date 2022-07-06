@@ -175,7 +175,7 @@ class Review {
     containerMessages.innerHTML = '';
 
     messages.reverse().forEach((elem) => {
-      if(elem.message.countId === itemId){
+      if(elem.countid === itemId){
 
         containerMessages.innerHTML += `
         <div class="message-item">
@@ -183,13 +183,13 @@ class Review {
             <figure class="avatar">
             </figure>
             <div>
-                <h5> ${elem.message.selector1}</h5>
+                <h5> ${elem.selector1}</h5>
                 <div class="date">${elem.date}</div>
                 <div class="time">${elem.time}</div>
             </div>
         </div>
         <div class="message-content">
-            ${elem.message.selector2}
+            ${elem.selector2}
         </div>
     </div>
         `;
