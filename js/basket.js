@@ -178,6 +178,7 @@ const sendGoods = () => {
   if (localStorage.getItem('post') === 'order') {
     const form = document.getElementById('form');
     form.classList.add('_none');
+    document.querySelector('.form').style.opacity = 0;
     document.querySelector('.showme').classList.add('hideme');
     footer.classList.add('showme');
     header.classList.add('showme');
