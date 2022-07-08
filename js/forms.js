@@ -74,7 +74,6 @@ form.addEventListener('submit', ((e) => {
         if (elem.value === '') {
             elem.classList.add('_error');
             error++;
-            console.log(error);
         } else {
             elem.classList.remove('_error');
         }
@@ -111,7 +110,7 @@ form.addEventListener('submit', ((e) => {
 
         postOrder(e);
 
-        localStorage.setItem('post', 'ttt');
+        localStorage.setItem('post', 'order');
         localStorage.removeItem('goods');
 
         clearInputs();

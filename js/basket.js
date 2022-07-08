@@ -175,8 +175,9 @@ document.querySelector('.title_checkout').addEventListener('click', () => {
 });
 
 
-if (localStorage.getItem('post') === 'ttt') {
-
+if (localStorage.getItem('post') === 'order') {
+  const form = document.getElementById('form');
+  form.classList.add('_none');
   document.querySelector('.showme').classList.add('hideme');
   footer.classList.add('showme');
   header.classList.add('showme');
