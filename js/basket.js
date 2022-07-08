@@ -1,15 +1,14 @@
-preloader();
+
 const basketWrapper = document.querySelector('.basket-wrapper');
-// let local = localStorage.getItem('basket-items');
 const btnCheckout = document.querySelector('.title_checkout');
 const btnPlusMinus = document.querySelectorAll('.item__btn ');
 const totalPrice = document.querySelector('.total_price');
 const cardTotal = document.querySelector('.item_total');
 const cardPrice = document.querySelector('.item_price ');
+const showButton = document.querySelector('.show_button');
+const basketTotalContainer = document.querySelector('.basket_total');
 
-setTimeout(preloader, 1000);
 
-//------------total price
 const total = () => {
   const basketWrapper = document.querySelector('.basket-wrapper');
 
@@ -61,13 +60,12 @@ const reSaveGoods = ((e) => {
 window.addEventListener('click', reSaveGoods);
 
 
-//----------deled good
 const delGoods = (e) => {
   const delGood = e.target.closest('.basket_item_delet');
   const item = e.target.closest('.basket-item');
   const titleGood = item.querySelector('.basket-item__title').innerHTML;
 
-  if (localStorage.getItem('goods') !== null ) {
+  if (localStorage.getItem('goods') !== null) {
     arr = JSON.parse(localStorage.getItem('goods'));
 
     if (delGood) {
@@ -83,7 +81,6 @@ const delGoods = (e) => {
 document.querySelector('.basket-wrapper').addEventListener('click', delGoods);
 
 
-//--------- вывод из локал товаров
 const renderGoods = () => {
 
   if (JSON.parse(localStorage.getItem('goods')) !== null) {
@@ -118,17 +115,10 @@ renderGoods();
 setInterval(renderGoods, 2000);
 
 
-//---------- проверка колва товара в локал и на странице
 const getQuantityOfgoods = () => {
-  // if (goodss !== null) {
-  //   if (JSON.parse(localStorage.getItem('goods')).length !== arr.length) {
-  //     renderGoods();
-  //     console.log('rendergoods');
-  //   }
-  // }
-  if(basketWrapper.childElementCount === 0){
+  if (basketWrapper.childElementCount === 0) {
     document.querySelector('.title_checkout').classList.add('_none');
-  }else{
+  } else {
     document.querySelector('.title_checkout').classList.remove('_none');
   }
 };
@@ -136,7 +126,6 @@ const intervalGetQuantityOfgoods = setInterval(getQuantityOfgoods, 1000);
 
 
 
-//----------------hover checkout
 btnCheckout.addEventListener('mousedown', (e) => {
   if (e.target.classList.contains('title_checkout')) {
     e.target.style.backgroundColor = 'rgb(174, 230, 64)';
@@ -148,24 +137,31 @@ btnCheckout.addEventListener('mouseup', (e) => {
   }
 });
 
-// -----------hover plus minus
+showButton.addEventListener('mousedown', () => {
+
+  showButton.style.backgroundColor = 'rgb(174, 230, 64)';
+
+});
+showButton.addEventListener('mouseup', () => {
+
+  showButton.style.backgroundColor = 'yellowgreen';
+
+});
+
+
 basketWrapper.addEventListener('mousedown', hoverBtnMouseDown);
 
 basketWrapper.addEventListener('mouseup', hoverBtnMouseUp);
 
 
 
-//---------------удаляю товар
-// basketWrapper.addEventListener('click', deleteBasketItem);
-
-//------------сохраняю измененное количество товара
 basketWrapper.addEventListener('click', counterGood);
-// basketWrapper.addEventListener('click', putGood);
 
 const titleContainerBasket = document.querySelector('.basket_title');
 
 document.querySelector('.title_checkout').addEventListener('click', () => {
-  // postBasket();
+
+
   clearInterval(intervalGetQuantityOfgoods);
   header.classList.add('_none');
   titleContainerBasket.classList.add('_none');
@@ -178,4 +174,13 @@ document.querySelector('.title_checkout').addEventListener('click', () => {
 
 });
 
+
+if (localStorage.getItem('post') === 'ttt') {
+
+  document.querySelector('.showme').classList.add('hideme');
+  footer.classList.add('showme');
+  header.classList.add('showme');
+  document.querySelector('.basket-body').classList.add('showme');
+  basketTotalContainer.classList.add('showme');
+}
 

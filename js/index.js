@@ -2,7 +2,7 @@
 const header = document.querySelector('.header');
 const footer = document.querySelector('.footer');
 
-//------------navbar
+
 const navigation = `
 <div class="heder__container _container">
 <a href="index.html" class="header__logo">
@@ -49,7 +49,7 @@ const navigation = `
 `;
 header.innerHTML += navigation;
 
-//--------------footer
+
 
 const footerHtml = `
 <div class="footer__top">
@@ -133,6 +133,3 @@ const footerHtml = `
 `;
 footer.innerHTML += footerHtml;
 
-if(localStorage.getItem('post') === 'ttt'){
-  document.querySelector('.showme').classList.add('hideme');
-}

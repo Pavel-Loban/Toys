@@ -17,7 +17,6 @@ const getResourse = async (url) => {
 
 const getListGood = async () => {
   const data = await getResourse(`${CATALOG_URL}`);
-  // console.log(data);
   return data;
 };
 
@@ -25,10 +24,7 @@ const getListGood = async () => {
 
 //-----------------выводится товар на  страницу
 const renderListGoods = async () => {
-  preloader();
   const data = await getResourse(`${CATALOG_URL}`);
-  // const goodsList = await getListGood();
-  // console.log(data);
   const containerGoods = document.querySelector('.catalog__body');
   containerGoods.innerHTML = '';
 
@@ -62,24 +58,18 @@ const renderListGoods = async () => {
             </div>
                 `;
   });
-  setTimeout(preloader, 100);
 };
 
 
-//----------отдельная страница товара
+
 const getGoodItem = async (goodId = 1) => {
   const data = await getResourse(`${CATALOG_URL}`);
-  // console.log(data);
 
   const goodItem = data.find(item => item.id === goodId);
-  // console.log(goodItem);
   return goodItem;
 };
 
 
-
-
-//----------------сохраняю товар в json и localStorage, который выбрал пользователь
 
 let arr = JSON.parse(localStorage.getItem('goods')) || [];
 
@@ -115,6 +105,7 @@ const postData = (e) => {
   localStorage.setItem('goods', JSON.stringify(arr));
 };
 
+
 const postBasket = (() => {
 
   const totalPrice = document.querySelector('.total_price').innerHTML;
@@ -147,26 +138,10 @@ const postBasket = (() => {
 });
 
 
-//-------------count goods navbar
+
 
 const getCountProductsBasket = () => {
-  // try {
-  //   const data = await getResourse(`${BASKET_URL}`);
-  //   const countBasketNavbar = document.querySelector('.amount');
-  //   let counter = 0;
-  //   if (data.length < 1) {
-  //     countBasketNavbar.classList.add('_none');
-  //   } else {
-  //     countBasketNavbar.classList.remove('_none');
-  //     data.forEach((elem) => {
-  //       counter += Number(elem.counter);
-  //     });
-  //     countBasketNavbar.innerHTML = counter;
-  //     countBasketNavbar.style.color = 'yellowgreen';
-  //   }
-  // } catch (err) {
-  //   console.log('Error!!!!!', err);
-  // }
+
   const countBasketNavbar = document.querySelector('.amount');
   if (JSON.parse(localStorage.getItem('goods')) !== null && JSON.parse(localStorage.getItem('goods')).length === 0) {
     countBasketNavbar.classList.add('_none');
@@ -192,12 +167,11 @@ const getCountProductsBasket = () => {
 
 setInterval(getCountProductsBasket, 1000);
 
-//-------------------вывод выбранного товара в корзину
+
 const getBasket = async () => {
   preloader();
   fetch(`${BASKET_URL}`).then(
     (res) => {
-      // console.log(res.json());
       return res.json();
     }
   ).then(

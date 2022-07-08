@@ -78,7 +78,6 @@ body {
     justify-content: center;
     align-items: center;
 }
-/* preloader  */
 
 .preloader {
     position: fixed;
@@ -145,7 +144,6 @@ body {
     display: none;
   }
 
-/* ---------------------------Шапка--------------------- */
 .header {
     position: fixed;
     background-color: #FFFFFF;
@@ -185,38 +183,24 @@ body {
 
 [data-tooltip] {
     position: relative;
-    /* Относительное позиционирование */
 }
 
 [data-tooltip]::after {
     content: attr(data-tooltip);
-    /* Выводим текст */
     position: absolute;
-    /* Абсолютное позиционирование */
     width: 100px;
-    /* Ширина подсказки */
     left: -25px;
     top: 0;
-    /* Положение подсказки */
-    /* background: #3989c9; Синий цвет фона */
     color: #7baef1;
-    /* Цвет текста */
     padding: 0.1em;
-    /* Поля вокруг текста */
-    /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); Параметры тени */
     pointer-events: none;
-    /* Подсказка */
     opacity: 0;
-    /* Подсказка невидима */
     transition: 0.3s;
-    /* Время появления подсказки */
 }
 
 [data-tooltip]:hover::after {
     opacity: 1;
-    /* Показываем подсказку */
     top: 1em;
-    /* Положение подсказки */
 }
 
 .header__menu {
@@ -271,7 +255,7 @@ body {
     color: #7baef1;
 }
 
-/* ------------------------------------ */
+
 body._touch .menu__list>li {
     display: flex;
     align-items: center;
@@ -287,7 +271,7 @@ body._lock {
 }
 
 
-/* -------------- burger-------------- */
+
 @media (min-width: 767px) {
 
     .menu__list {
@@ -378,12 +362,12 @@ body._lock {
 
 }
 
-/* -----------------PAGE------------- */
+
 .page {
     flex: 1 1 auto;
 }
 
-.page__mainblock {}
+
 
 .page__services {
     margin: -111px 0px 0px 0px;
@@ -391,11 +375,8 @@ body._lock {
     position: relative;
 }
 
-.page__advantages {}
 
-.page_catalog {}
 
-/* --------------HEADER BLOCK----------------- */
 .header__block {
     text-align: center;
 
@@ -432,8 +413,6 @@ body._lock {
     }
 }
 
-
-/* ------------------------------------------------- */
 .mainblock {
     position: relative;
 }
@@ -536,21 +515,14 @@ body._lock {
 
 @media (max-width: 1300px) {
     .mainblock__image img {
-        /* object-position: right; */
     }
 }
 
 @media (max-width: 992px) {
     .mainblock__image img {
-        /* opacity: 0.5; */
     }
 }
 
-/* ---------------section services-------------- */
-
-.services {}
-
-.services__container {}
 
 .services__body {
     display: flex;
@@ -599,7 +571,7 @@ body._lock {
     margin: 0px 0px 10px 0px;
 }
 
-.item_service__icon {}
+
 
 .item_service__title {
     font-weight: 700;
@@ -618,18 +590,16 @@ body._lock {
 }
 
 
-/* -------------------------basket--------------------- */
 
-/* ------------Подвал */
 
-.footer {}
+
 
 .footer__top {
     background: #7b8ec0;
     padding: 30px 0;
 }
 
-.footer_main {}
+
 
 .footer_row {
     display: flex;
@@ -674,13 +644,7 @@ body._lock {
     margin: 0px 0px 20px 0px;
 }
 
-.footer_menu {}
 
-.menu_footer {}
-
-.menu {}
-
-.footer_list {}
 
 .menu_footer_item:not(:last-child) {
     margin: 0px 0px 10px 0px;
@@ -716,7 +680,7 @@ body._lock {
 
 }
 
-.footer_contacts {}
+
 
 .contacts_footer {
     display: flex;
@@ -746,7 +710,7 @@ body._lock {
 
 .contacts_footer_item:not(:last-child) {
     margin: 0px 0px 12px 0px;
-    ;
+
 }
 
 .contacts_footer_item_phone {
@@ -773,7 +737,7 @@ body._lock {
     }
 }
 
-.footer_container {}
+
 
 .footer_copy {
     font-weight: 600;

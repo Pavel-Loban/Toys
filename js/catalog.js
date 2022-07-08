@@ -1,5 +1,10 @@
 const catalog = document.querySelector('.catalog__body');
-//--------------------add card------------
+const modal = document.querySelector('#modal1');
+const modalInput = document.querySelector('.modal_input');
+const inputSearch = document.querySelector('.input_search');
+const imgSearch = document.querySelector('.img_search');
+const assistant = document.querySelector('.assistent');
+
 renderListGoods();
 let cartItemHTML = '';
 
@@ -7,12 +12,9 @@ let cartItemHTML = '';
 document.querySelector('.catalog__body').addEventListener('click', counterGood);
 
 document.querySelector('.catalog__body').addEventListener('click', (e) => {
-  // e.preventDefault();
   if (e.target.classList.contains('item__btn_add')) {
-  postData(e);
+    postData(e);
   }
-
-  // e.stopPropagation();
 
 });
 
@@ -36,7 +38,7 @@ document.querySelector('.catalog__body').addEventListener('mousemove', (e) => {
 
 
 
-const modal = document.querySelector('#modal1');
+
 
 const getModal = () => {
   modal.classList.remove('_none');
@@ -47,9 +49,9 @@ document.querySelector('.modal_close_btn').addEventListener('click', () => {
   modal.classList.add('_none');
 });
 
-const modalInput = document.querySelector('.modal_input');
 
-//------------ only numbers
+
+
 modalInput.addEventListener('keydown', (e) => {
   if (e.keyCode === 46 || e.keyCode === 8 || e.keyCode === 9 || e.keyCode === 27 ||
     (e.keyCode === 65 && e.ctrlKey === true) || (e.keyCode >= 35 && e.keyCode <= 39)) {
@@ -133,6 +135,7 @@ const sortCatalogName = () => {
     }
   }
 };
+
 document.querySelector('#btn_a_z_high').addEventListener('click', sortCatalogName);
 
 const sortCatalogNameRevers = () => {
@@ -145,11 +148,8 @@ const sortCatalogNameRevers = () => {
     }
   }
 };
-document.querySelector('#btn_a_z_smoll').addEventListener('click', sortCatalogNameRevers);
-//-----------input search
 
-const inputSearch = document.querySelector('.input_search');
-const imgSearch = document.querySelector('.img_search');
+document.querySelector('#btn_a_z_smoll').addEventListener('click', sortCatalogNameRevers);
 
 imgSearch.addEventListener('click', () => {
   inputSearch.classList.toggle('_none');
@@ -161,7 +161,6 @@ inputSearch.addEventListener('blur', () => {
 
 inputSearch.addEventListener('input', () => {
   let nameGoods = document.querySelectorAll('.item_catalog__title');
-
 
   nameGoods.forEach((elem) => {
 
@@ -178,22 +177,24 @@ inputSearch.addEventListener('input', () => {
   const newR = [...nameGoods];
   newR.every((elem) => {
     const noResult = document.querySelector('.no_result ');
-    if(elem.parentElement.closest('.hide')){
+    if (elem.parentElement.closest('.hide')) {
       noResult.style.opacity = '1';
-    }else
-    noResult.style.opacity = '0';
+    } else
+      noResult.style.opacity = '0';
   });
 });
 
-//--------scrool top-0
-const assistant = document.querySelector('.assistent');
 
-assistant.addEventListener('click',(e) => {
-  window.scrollTo({top: 0,
-    behavior: 'smooth'});
+
+
+assistant.addEventListener('click', (e) => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 });
 
-window.addEventListener('scroll',() => {
+window.addEventListener('scroll', () => {
   assistant.hidden = (scrollY < document.documentElement.clientHeight);
 });
 

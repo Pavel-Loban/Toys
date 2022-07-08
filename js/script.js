@@ -5,10 +5,13 @@ const iconMenu = document.querySelector('.menu__icon');
 const menuBody = document.querySelector('.menu__body');
 
 const preloader = () => {
-    // document.body.classList.add('loaded_hiding');
-    const pre = document.querySelector('.preloader');
-      pre.classList.toggle('loaded');
+    const preloader = document.querySelector('.preloader');
+    preloader.classList.toggle('loaded');
   };
+
+preloader();
+
+setTimeout(preloader,1000);
 
 
 
@@ -44,7 +47,7 @@ if (isMobile.any()) {
 } else {
     document.body.classList.add('_pc');
 }
-//---------------меню бургер
+
 
 if(iconMenu){
 
@@ -55,7 +58,7 @@ if(iconMenu){
     });
 }
 
-// прокрутка при клике
+
 
 if (menuContact.length > 0) {
     menuContact.forEach(link => {
@@ -82,7 +85,7 @@ if (menuContact.length > 0) {
         }
     }
 }
-//----------------------------counter goods
+
 
 const counterGood = ((e) => {
     let counter;
@@ -102,7 +105,7 @@ const counterGood = ((e) => {
     }
 });
 
-//------------------hover + and -
+
 const hoverBtnMouseDown = (e) => {
     if(e.target.classList.contains('item__btn')){
        e.target.style.backgroundColor = '#c6d9f3';

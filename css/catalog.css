@@ -12,7 +12,7 @@
     content: url(../img/catalog/assistantup.svg);
 }
 
-/* ----------------catalog sort */
+
 .sort{
     display: flex;
     align-items:center;
@@ -68,12 +68,9 @@
     outline: none;
     border:1px solid #0a80ff;
 }
-.img_search {
-}
-/* -----------------------------------Catalog--------------------- */
+
 .no_result{
     font-size: 20px;
-    /* display: none; */
     opacity: 0;
 }
 
@@ -93,7 +90,7 @@
     }
 }
 
-.catalog_container {}
+
 
 .catalog__header {
     margin: 0px 0px 45px 0px;
@@ -124,7 +121,6 @@
     }
 }
 
-.catalog__item {}
 
 .item_catalog {
     background-color: #FFFFFF;
@@ -186,9 +182,7 @@
 
 }
 
-.item_action {
-    /* margin: 15px 0px 15px 0px; */
-}
+
 
 .item_action_text {
     font-weight: 500;
@@ -214,8 +208,6 @@
 }
 
 
-
-.btn_add {}
 
 .item__btn_add {
     width: 115px;
@@ -246,7 +238,7 @@
     outline: 0;
     border-bottom: 2px solid #867f7c;
 }
-/* ---------modal */
+
 
 .modal {
     position: fixed;
@@ -283,18 +275,11 @@
     justify-content: space-between;
     padding: 0px 0px 10px 0px;
 }
-.modal_content {
 
-}
-.modal_title {
-}
 .modal_text {
     padding: 0px 0px 10px 0px;
 }
-.modal_close {
 
-
-}
 .modal_close_btn {
     display: flex;
     transform: rotate(45deg) scale(2);
