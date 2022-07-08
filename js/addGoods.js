@@ -74,11 +74,9 @@ const getGoodItem = async (goodId = 1) => {
 let arr = JSON.parse(localStorage.getItem('goods')) || [];
 
 const postData = (e) => {
-  console.log('postData');
   if (localStorage.getItem('goods') !== null) {
     arr = JSON.parse(localStorage.getItem('goods'));
   }
-  console.log(arr);
   const card = e.target.closest('.catalog__item');
   const countGood = card.querySelector('.item_total ');
 
@@ -131,7 +129,6 @@ const postBasket = (() => {
       }
     ).then(
       res => {
-        console.log(res);
       }
     );
   });
