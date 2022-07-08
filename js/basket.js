@@ -174,14 +174,16 @@ document.querySelector('.title_checkout').addEventListener('click', () => {
 
 });
 
+const sendGoods = () => {
+  if (localStorage.getItem('post') === 'order') {
+    const form = document.getElementById('form');
 
-if (localStorage.getItem('post') === 'order') {
-  const form = document.getElementById('form');
+    document.querySelector('.showme').classList.add('hideme');
+    footer.classList.add('showme');
+    header.classList.add('showme');
+    document.querySelector('.basket-body').classList.add('showme');
+    basketTotalContainer.classList.add('showme');
+  }
 
-  document.querySelector('.showme').classList.add('hideme');
-  footer.classList.add('showme');
-  header.classList.add('showme');
-  document.querySelector('.basket-body').classList.add('showme');
-  basketTotalContainer.classList.add('showme');
 }
 

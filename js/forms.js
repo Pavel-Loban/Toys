@@ -113,7 +113,8 @@ form.addEventListener('submit', ((e) => {
         localStorage.setItem('post', 'order');
         localStorage.removeItem('goods');
         clearInputs();
-        form.classList.add('_none');
+        // form.classList.add('_none');
+        sendGoods();
     }
 }));
 
