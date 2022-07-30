@@ -62,13 +62,12 @@ const renderListGoods = async () => {
 
 
 
-const getGoodItem = async (goodId = 1) => {
+const getGoodItem = async (goodId) => {
   const data = await getResourse(`${CATALOG_URL}`);
 
   const goodItem = data.find(item => item.id === goodId);
   return goodItem;
 };
-
 
 
 let arr = JSON.parse(localStorage.getItem('goods')) || [];
@@ -104,35 +103,35 @@ const postData = (e) => {
 };
 
 
-const postBasket = (() => {
+// const postBasket = (() => {
 
-  const totalPrice = document.querySelector('.total_price').innerHTML;
+//   const totalPrice = document.querySelector('.total_price').innerHTML;
 
-  [...basketWrapper.children].forEach((elem) => {
+//   [...basketWrapper.children].forEach((elem) => {
 
-    fetch(`${BASKET_URL}`, {
-      method: 'POST',
-      body: JSON.stringify({
-        "title": elem.querySelector('.basket-item__title').innerText,
-        "imgSrc": elem.querySelector('.basket_img').getAttribute('src'),
-        "counter": elem.querySelector('.item_total').value,
-        "price": elem.querySelector('.item_price ').innerText,
-        "number": elem.dataset.id,
-        "totalPrice": totalPrice
-      }),
-      headers: {
-        "Content-type": "application/json; charset=utf-8"
-      }
-    }).then(
-      res => {
-        return res.json();
-      }
-    ).then(
-      res => {
-      }
-    );
-  });
-});
+//     fetch(`${BASKET_URL}`, {
+//       method: 'POST',
+//       body: JSON.stringify({
+//         "title": elem.querySelector('.basket-item__title').innerText,
+//         "imgSrc": elem.querySelector('.basket_img').getAttribute('src'),
+//         "counter": elem.querySelector('.item_total').value,
+//         "price": elem.querySelector('.item_price ').innerText,
+//         "number": elem.dataset.id,
+//         "totalPrice": totalPrice
+//       }),
+//       headers: {
+//         "Content-type": "application/json; charset=utf-8"
+//       }
+//     }).then(
+//       res => {
+//         return res.json();
+//       }
+//     ).then(
+//       res => {
+//       }
+//     );
+//   });
+// });
 
 
 
@@ -165,45 +164,45 @@ const getCountProductsBasket = () => {
 setInterval(getCountProductsBasket, 1000);
 
 
-const getBasket = async () => {
-  preloader();
-  fetch(`${BASKET_URL}`).then(
-    (res) => {
-      return res.json();
-    }
-  ).then(
-    (data) => {
-      basketWrapper.innerHTML = '';
-      data.forEach((good) => {
-        basketWrapper.innerHTML += `<div class="basket-item" data-id="${good.id}">
-            <div class="basket-item__row">
-              <div class="basket_container_img item__basket">
-                <div href="" class="basket_catalog__image ">
-                  <img class="basket_img" src="${good.imgSrc}" alt="${good.title}" />
-                </div>
-              </div>
-              <div class="basket-item__title item__basket">${good.title}</div>
-              <div class="item_count flex_center item__basket">
-                <a class="item__btn item_action_text flex_center" data-btn="btn-neg">-1</a>
-                <input class="item_total item_action_text" type="text" style="width: 30px;" value="${good.counter}" readonly>
-                <a class="item__btn item_action_text flex_center" data-btn="btn-pos">+1</a>
-              </div>
-              <div class="item_price item__basket">
-                <span class="item_price item_action_text">
-                ${good.price}
-                </span>
-              </div>
-              <div class="basket_item_delet item__basket">remove from cart</div>
-            </div>
-          </div>`;
-      });
-      setTimeout(preloader, 500);
-    }
-  ).catch(
-    (err) => {
-      console.log(err);
-    }
-  );
-};
+// const getBasket = async () => {
+//   preloader();
+//   fetch(`${BASKET_URL}`).then(
+//     (res) => {
+//       return res.json();
+//     }
+//   ).then(
+//     (data) => {
+//       basketWrapper.innerHTML = '';
+//       data.forEach((good) => {
+//         basketWrapper.innerHTML += `<div class="basket-item" data-id="${good.id}">
+//             <div class="basket-item__row">
+//               <div class="basket_container_img item__basket">
+//                 <div href="" class="basket_catalog__image ">
+//                   <img class="basket_img" src="${good.imgSrc}" alt="${good.title}" />
+//                 </div>
+//               </div>
+//               <div class="basket-item__title item__basket">${good.title}</div>
+//               <div class="item_count flex_center item__basket">
+//                 <a class="item__btn item_action_text flex_center" data-btn="btn-neg">-1</a>
+//                 <input class="item_total item_action_text" type="text" style="width: 30px;" value="${good.counter}" readonly>
+//                 <a class="item__btn item_action_text flex_center" data-btn="btn-pos">+1</a>
+//               </div>
+//               <div class="item_price item__basket">
+//                 <span class="item_price item_action_text">
+//                 ${good.price}
+//                 </span>
+//               </div>
+//               <div class="basket_item_delet item__basket">remove from cart</div>
+//             </div>
+//           </div>`;
+//       });
+//       setTimeout(preloader, 500);
+//     }
+//   ).catch(
+//     (err) => {
+//       console.log(err);
+//     }
+//   );
+// };
 
 
