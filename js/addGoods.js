@@ -1,6 +1,6 @@
-// const CATALOG_URL = 'http://localhost:3000/data';
+const CATALOG_URL = 'http://localhost:3000/data';
 const BASKET_URL = 'http://localhost:3000/basket';
-const CATALOG_URL = 'https://toys-goods.herokuapp.com/api/good';
+//const CATALOG_URL = 'https://toys-goods.herokuapp.com/api/good';
 
 const getResourse = async (url) => {
 
