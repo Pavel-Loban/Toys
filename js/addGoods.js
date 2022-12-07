@@ -2,6 +2,502 @@ const CATALOG_URL = 'http://localhost:3000/data';
 const BASKET_URL = 'http://localhost:3000/basket';
 //const CATALOG_URL = 'https://toys-goods.herokuapp.com/api/good';
 
+const data = [
+    {
+      "id": 1,
+      "title": "Car city",
+      "imgSrc": "img/catalog/towncars.jpg",
+      "price": "10$",
+      "moreImage": [
+        "img/catalog/towncars.jpg",
+        "img/catalog/constructor.jpg",
+        "img/catalog/car.jpg",
+        "img/catalog/mustang.jpg"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Plastic constructor2",
+      "imgSrc": "img/catalog/constructor.jpg",
+      "price": "11$",
+      "moreImage": [
+        "img/catalog/constructor.jpg",
+        "img/catalog/towncars.jpg",
+        "img/catalog/car.jpg",
+        "img/catalog/mustang.jpg"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Car",
+      "imgSrc": "img/catalog/car.jpg",
+      "price": "12$",
+      "moreImage": [
+        "img/catalog/car.jpg",
+        "img/catalog/towncars.jpg",
+        "img/catalog/constructor.jpg",
+        "img/catalog/mustang.jpg"
+      ]
+    },
+    {
+      "title": "Retro car",
+      "imgSrc": "img/catalog/mustang.jpg",
+      "price": "13$",
+      "id": 4,
+      "moreImage": [
+        "img/catalog/mustang.jpg",
+        "img/catalog/towncars.jpg",
+        "img/catalog/constructor.jpg",
+        "img/catalog/car.jpg"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Toy set",
+      "imgSrc": "img/catalog/toyset.jpg",
+      "price": "15$",
+      "moreImage": [
+        "img/catalog/toyset.jpg",
+        "img/catalog/constructor.jpg",
+        "img/catalog/car.jpg",
+        "img/catalog/mustang.jpg"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Plastic constructor6",
+      "imgSrc": "img/catalog/constructor.jpg",
+      "price": "16$",
+      "moreImage": [
+        "img/catalog/constructor.jpg",
+        "img/catalog/towncars.jpg",
+        "img/catalog/car.jpg",
+        "img/catalog/mustang.jpg"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Plastic constructor7",
+      "imgSrc": "img/catalog/constructor.jpg",
+      "price": "17$",
+      "moreImage": [
+        "img/catalog/constructor.jpg",
+        "img/catalog/towncars.jpg",
+        "img/catalog/mustang.jpg"
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Plastic constructor8",
+      "imgSrc": "img/catalog/constructor.jpg",
+      "price": "18$",
+      "moreImage": [
+        "img/catalog/constructor.jpg",
+        "img/catalog/towncars.jpg",
+        "img/catalog/car.jpg",
+        "img/catalog/mustang.jpg"
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Plastic constructor4",
+      "imgSrc": "img/catalog/constructor.jpg",
+      "price": "19$",
+      "moreImage": [
+        "img/catalog/constructor.jpg",
+        "img/catalog/towncars.jpg",
+        "img/catalog/car.jpg",
+        "img/catalog/mustang.jpg"
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Plastic constructor5",
+      "imgSrc": "img/catalog/constructor.jpg",
+      "price": "20$",
+      "moreImage": [
+        "img/catalog/constructor.jpg",
+        "img/catalog/towncars.jpg",
+        "img/catalog/car.jpg",
+        "img/catalog/mustang.jpg"
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Plastic constructor6",
+      "imgSrc": "img/catalog/constructor.jpg",
+      "price": "21$",
+      "moreImage": [
+        "img/catalog/constructor.jpg",
+        "img/catalog/towncars.jpg",
+        "img/catalog/car.jpg",
+        "img/catalog/mustang.jpg"
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Plastic constructor7",
+      "imgSrc": "img/catalog/constructor.jpg",
+      "price": "22$",
+      "moreImage": [
+        "img/catalog/constructor.jpg",
+        "img/catalog/towncars.jpg",
+        "img/catalog/car.jpg",
+        "img/catalog/mustang.jpg"
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Plastic constructor8",
+      "imgSrc": "img/catalog/constructor.jpg",
+      "price": "23$",
+      "moreImage": [
+        "img/catalog/constructor.jpg",
+        "img/catalog/towncars.jpg",
+        "img/catalog/car.jpg",
+        "img/catalog/mustang.jpg"
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Plastic constructor7",
+      "imgSrc": "img/catalog/constructor.jpg",
+      "price": "24$",
+      "moreImage": [
+        "img/catalog/constructor.jpg",
+        "img/catalog/towncars.jpg",
+        "img/catalog/car.jpg",
+        "img/catalog/mustang.jpg"
+      ]
+    },
+    {
+      "id": 15,
+      "title": "Plastic constructor8",
+      "imgSrc": "img/catalog/constructor.jpg",
+      "price": "25$",
+      "moreImage": [
+        "img/catalog/constructor.jpg",
+        "img/catalog/towncars.jpg",
+        "img/catalog/car.jpg",
+        "img/catalog/mustang.jpg"
+      ]
+    }
+  ],
+  "basket": [
+    {
+      "goods": [
+        [
+          {
+            "title": "Plastic constructor2",
+            "id": "2",
+            "imgSrc": "img/catalog/constructor.jpg",
+            "counter": "1",
+            "price": "11$"
+          }
+        ]
+      ],
+      "totalPrice": "11",
+      "locality": "arg",
+      "street": "sdf",
+      "House": "ghkghj",
+      "Ent": "",
+      "Floor": "",
+      "Name": "",
+      "Surname": "",
+      "email": "",
+      "Phone ": "loban_pasha@mail.ru",
+      "Payment ": "324",
+      "id": 1
+    },
+    {
+      "goods": [
+        [
+          {
+            "title": "Retro car",
+            "id": "4",
+            "imgSrc": "img/catalog/mustang.jpg",
+            "counter": "1",
+            "price": "21$"
+          }
+        ]
+      ],
+      "totalPrice": "21",
+      "locality": "arg",
+      "street": "sdf",
+      "House": "ghkghj",
+      "Ent": "",
+      "Floor": "",
+      "Name": "",
+      "Surname": "",
+      "email": "",
+      "Phone ": "loban_pasha@mail.ru",
+      "Payment ": "324",
+      "id": 2
+    },
+    {
+      "goods": [
+        [
+          {
+            "title": "Retro car",
+            "id": "4",
+            "imgSrc": "img/catalog/mustang.jpg",
+            "counter": "1",
+            "price": "21$"
+          }
+        ]
+      ],
+      "totalPrice": "21",
+      "locality": "arg",
+      "street": "sdf",
+      "House": "ghkghj",
+      "Ent": "",
+      "Floor": "",
+      "Name": "",
+      "Surname": "",
+      "email": "",
+      "Phone ": "loban_pasha@mail.ru",
+      "Payment ": "324",
+      "id": 3
+    },
+    {
+      "goods": [
+        [
+          {
+            "title": "Retro car",
+            "id": "4",
+            "imgSrc": "img/catalog/mustang.jpg",
+            "counter": 2,
+            "price": "21$"
+          }
+        ]
+      ],
+      "totalPrice": "42",
+      "locality": "arg",
+      "street": "sdf",
+      "House": "ghkghj",
+      "Ent": "",
+      "Floor": "",
+      "Name": "",
+      "Surname": "",
+      "email": "",
+      "Phone ": "loban_pasha@mail.ru",
+      "Payment ": "324",
+      "id": 4
+    },
+    {
+      "goods": [
+        [
+          {
+            "title": "Retro car",
+            "id": "4",
+            "imgSrc": "img/catalog/mustang.jpg",
+            "counter": "1",
+            "price": "21$"
+          }
+        ]
+      ],
+      "totalPrice": "21",
+      "locality": "arg",
+      "street": "sdf",
+      "House": "ghkghj",
+      "Ent": "",
+      "Floor": "",
+      "Name": "",
+      "Surname": "",
+      "email": "",
+      "Phone ": "loban_pasha@mail.ru",
+      "Payment ": "324",
+      "id": 5
+    },
+    {
+      "goods": [
+        [
+          {
+            "title": "Retro car",
+            "id": "4",
+            "imgSrc": "img/catalog/mustang.jpg",
+            "counter": "1",
+            "price": "21$"
+          }
+        ]
+      ],
+      "totalPrice": "21",
+      "locality": "arg",
+      "street": "sdf",
+      "House": "ghkghj",
+      "Ent": "",
+      "Floor": "",
+      "Name": "",
+      "Surname": "",
+      "email": "",
+      "Phone ": "loban_pasha@mail.ru",
+      "Payment ": "324",
+      "id": 6
+    },
+    {
+      "goods": [
+        [
+          {
+            "title": "Car",
+            "id": "3",
+            "imgSrc": "img/catalog/car.jpg",
+            "counter": "1",
+            "price": "18$"
+          }
+        ]
+      ],
+      "totalPrice": "18",
+      "locality": "arg",
+      "street": "sdf",
+      "House": "ghkghj",
+      "Ent": "",
+      "Floor": "",
+      "Name": "",
+      "Surname": "",
+      "email": "",
+      "Phone ": "loban_pasha@mail.ru",
+      "Payment ": "324",
+      "id": 7
+    },
+    {
+      "goods": [
+        [
+          {
+            "title": "Car",
+            "id": "3",
+            "imgSrc": "img/catalog/car.jpg",
+            "counter": "1",
+            "price": "18$"
+          }
+        ]
+      ],
+      "totalPrice": "18",
+      "locality": "arg",
+      "street": "sdf",
+      "House": "ghkghj",
+      "Ent": "",
+      "Floor": "",
+      "Name": "",
+      "Surname": "",
+      "email": "",
+      "Phone ": "loban_pasha@mail.ru",
+      "Payment ": "324",
+      "id": 8
+    },
+    {
+      "goods": [
+        [
+          {
+            "title": "Retro car",
+            "id": "4",
+            "imgSrc": "img/catalog/mustang.jpg",
+            "counter": "1",
+            "price": "21$"
+          }
+        ]
+      ],
+      "totalPrice": "21",
+      "locality": "arg",
+      "street": "sdf",
+      "House": "ghkghj",
+      "Ent": "",
+      "Floor": "",
+      "Name": "",
+      "Surname": "",
+      "email": "",
+      "Phone ": "loban_pasha@mail.ru",
+      "Payment ": "324",
+      "id": 9
+    },
+    {
+      "goods": [
+        [
+          {
+            "title": "Plastic constructor2",
+            "id": "2",
+            "imgSrc": "img/catalog/constructor.jpg",
+            "counter": "1",
+            "price": "11$"
+          }
+        ]
+      ],
+      "totalPrice": "11",
+      "locality": "arg",
+      "street": "sdf",
+      "House": "ghkghj",
+      "Ent": "",
+      "Floor": "",
+      "Name": "",
+      "Surname": "",
+      "email": "",
+      "Phone ": "loban_pasha@mail.ru",
+      "Payment ": "324",
+      "id": 10
+    },
+    {
+      "goods": [
+        [
+          {
+            "title": "Retro car",
+            "id": "4",
+            "imgSrc": "img/catalog/mustang.jpg",
+            "counter": "1",
+            "price": "21$"
+          }
+        ]
+      ],
+      "totalPrice": "21",
+      "locality": "arg",
+      "street": "sdf",
+      "House": "ghkghj",
+      "Ent": "",
+      "Floor": "",
+      "Name": "",
+      "Surname": "",
+      "email": "",
+      "Phone ": "loban_pasha@mail.ru",
+      "Payment ": "324",
+      "id": 11
+    },
+    {
+      "goods": [
+        [
+          {
+            "title": "Retro car",
+            "id": "4",
+            "imgSrc": "img/catalog/mustang.jpg",
+            "counter": "1",
+            "price": "21$"
+          }
+        ]
+      ],
+      "totalPrice": "21",
+      "locality": "arg",
+      "street": "sdf",
+      "House": "ghkghj",
+      "Ent": "",
+      "Floor": "",
+      "Name": "",
+      "Surname": "",
+      "email": "",
+      "Phone ": "loban_pasha@mail.ru",
+      "Payment ": "324",
+      "id": 12
+    }
+  ],
+  "messages": [
+    {
+      "message": {
+        "selector1": "Max",
+        "selector2": "super",
+        "countId": 4
+      },
+      "time": "10:45",
+      "date": "2022-7-6",
+      "id": 1
+    }
+  ]
+
 const getResourse = async (url) => {
 
   try {
@@ -23,10 +519,10 @@ const getListGood = async () => {
 
 
 //-----------------выводится товар на  страницу
-const renderListGoods = async () => {
-  const data = await getResourse(`${CATALOG_URL}`);
-  const containerGoods = document.querySelector('.catalog__body');
-  containerGoods.innerHTML = '';
+// const renderListGoods = async () => {
+//   const data = await getResourse(`${CATALOG_URL}`);
+//   const containerGoods = document.querySelector('.catalog__body');
+//   containerGoods.innerHTML = '';
 
   data.forEach((good) => {
     containerGoods.innerHTML += `
@@ -58,7 +554,7 @@ const renderListGoods = async () => {
             </div>
                 `;
   });
-};
+// };
 
 
 
