@@ -30,7 +30,8 @@ const renderMoreInfoGood = async () => {
   imgGood.alt = goodItem.title;
   priceGood.innerHTML = goodItem.price;
 
-  goodItem.more_image.forEach((img, index) => {
+//   goodItem.more_image.forEach((img, index) => {
+  goodItem.moreImage.forEach((img, index) => {
     if (index === 0) {
       moreImg.innerHTML += `
       <div class="image _img active-image"><img src=${img} alt="example"></div>
