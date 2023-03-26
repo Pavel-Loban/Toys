@@ -215,7 +215,7 @@ const getListGood = async () => {
               <div class="catalog__column">
               <div class="catalog__item item_catalog" data-id="${good.id}">
                 <a href="good.html?id=${good.id}" target="_blank" class="item_catalog__image _img">
-                  <img class="product_img" src="${good.img_src}" alt="plastic constructor" />
+                  <img class="product_img" src="${good.imgSrc}" alt="plastic constructor" />
                 </a>
                 <div class="item_catalog_content">
                   <div class="content">
