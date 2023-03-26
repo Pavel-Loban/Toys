@@ -206,6 +206,7 @@ const getListGood = async () => {
 
 //-----------------выводится товар на  страницу
 // const renderListGoods = async () => {
+const renderListGoods = () => {
 //   const data = await getResourse(`${CATALOG_URL}`);
    const containerGoods = document.querySelector('.catalog__body');
    containerGoods.innerHTML = '';
@@ -240,7 +241,7 @@ const getListGood = async () => {
             </div>
                 `;
   });
-// };
+ };
 
 
 
