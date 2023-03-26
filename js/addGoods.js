@@ -245,8 +245,15 @@ const renderListGoods = () => {
 
 
 
-const getGoodItem = async (goodId) => {
-  const data = await getResourse(`${CATALOG_URL}`);
+// const getGoodItem = async (goodId) => {
+//   const data = await getResourse(`${CATALOG_URL}`);
+
+//   const goodItem = data.find(item => item.id === goodId);
+//   return goodItem;
+// };
+
+const getGoodItem =  (goodId) => {
+//   const data = await getResourse(`${CATALOG_URL}`);
 
   const goodItem = data.find(item => item.id === goodId);
   return goodItem;
