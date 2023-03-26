@@ -16,6 +16,7 @@ const renderMoreInfoGood = async () => {
 
 //   const goodItem = await getGoodItem(itemId);
   const goodItem =  getGoodItem(itemId);
+  console.log(goodItem)
 
   headerTitle.innerHTML = goodItem.title;
   good.dataset.id = goodItem.id;
