@@ -19,7 +19,8 @@ const renderMoreInfoGood = async () => {
 
   headerTitle.innerHTML = goodItem.title;
   good.dataset.id = goodItem.id;
-  imgGood.style.background = `url(${goodItem.img_src}) no-repeat`;
+//   imgGood.style.background = `url(${goodItem.img_src}) no-repeat`;
+  imgGood.style.background = `url(${goodItem.imgSrc}) no-repeat`;
   imgGood.style.height = '100%';
   imgGood.style.width = '100%';
   imgGood.style.backgroundPosition = 'center';
