@@ -207,8 +207,8 @@ const getListGood = async () => {
 //-----------------выводится товар на  страницу
 // const renderListGoods = async () => {
 //   const data = await getResourse(`${CATALOG_URL}`);
-//   const containerGoods = document.querySelector('.catalog__body');
-//   containerGoods.innerHTML = '';
+   const containerGoods = document.querySelector('.catalog__body');
+   containerGoods.innerHTML = '';
 
   data.forEach((good) => {
     containerGoods.innerHTML += `
