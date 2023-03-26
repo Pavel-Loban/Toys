@@ -14,7 +14,8 @@ const renderMoreInfoGood = async () => {
 
   const itemId = Number(window.location.search.split('?id=')[1]);
 
-  const goodItem = await getGoodItem(itemId);
+//   const goodItem = await getGoodItem(itemId);
+  const goodItem =  getGoodItem(itemId);
 
   headerTitle.innerHTML = goodItem.title;
   good.dataset.id = goodItem.id;
