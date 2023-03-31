@@ -1,4 +1,4 @@
-                                                             # Hello!!!
+# Hello!!!
 
 ## Technologies used in the project: HTML5, CSS, JavaScript, WebPack, NodeJS, PostgreSQL, Ajax, OOP, JSON, localStorage.
 
