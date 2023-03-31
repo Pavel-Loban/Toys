@@ -6,7 +6,7 @@
 
 ## Main page: description and contacts of the organization.
 
-##C atalog page: all products, sorting products by cost and alphabetically, search by product name, selecting the quantity of goods and adding to the cart, scrolling to the top of the page, pop-up modal help window, data is saved in localstorage.
+## Catalog page: all products, sorting products by cost and alphabetically, search by product name, selecting the quantity of goods and adding to the cart, scrolling to the top of the page, pop-up modal help window, data is saved in localstorage.
 
 ## Product page: product description, product reviews, product images, image magnification (parallax effect)
 
