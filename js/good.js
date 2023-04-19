@@ -155,7 +155,7 @@ const renderMessages = async () => {
   const containerMessages = document.querySelector('.message_container');
   containerMessages.innerHTML = '';
 
-  messages.reverse().forEach((elem) => {
+messages &&  messages.reverse().forEach((elem) => {
     if (elem.countid === itemId) {
 
       containerMessages.innerHTML += `
