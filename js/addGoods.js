@@ -292,6 +292,35 @@ const postData = (e) => {
   localStorage.setItem('goods', JSON.stringify(arr));
 };
 
+const postDataGood = (e) => {
+  if (localStorage.getItem('goods') !== null) {
+    arr = JSON.parse(localStorage.getItem('goods'));
+  }
+  const card = e.target.closest('.item_good2');
+  const countGood = card.querySelector('.item_total');
+
+  let good = {
+    "title":  card.querySelector('.item_good__title').innerText  ,
+    "id": window.location.href.slice(35),
+    "counter": card.querySelector('.item_total').value,
+    "price": card.querySelector('.item_action_text').innerText,
+  };
+  console.log(good)
+  arr.push(good);
+
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] !== undefined && arr[i].title === arr[j].title) {
+        arr[i].counter = +arr[i].counter + (+arr[j].counter);
+        arr.splice([j], 1);
+      }
+    }
+  }
+  countGood.value = 1;
+
+  localStorage.setItem('goods', JSON.stringify(arr));
+};
+
 
 // const postBasket = (() => {
 
