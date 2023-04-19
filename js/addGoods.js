@@ -184,18 +184,18 @@ const data = [
     }
   ]
 
-const getResourse = async (url) => {
+// const getResourse = async (url) => {
 
-  try {
-    const res = await fetch(url);
-    return await res.json();
-  } catch (err) {
-    console.log(err);
-    throw new Error(`!!!!!!!!! ${err}`);
+//   try {
+//     const res = await fetch(url);
+//     return await res.json();
+//   } catch (err) {
+//     console.log(err);
+//     throw new Error(`!!!!!!!!! ${err}`);
 
-  }
+//   }
 
-};
+// };
 
 const getListGood = async () => {
   const data = await getResourse(`${CATALOG_URL}`);
