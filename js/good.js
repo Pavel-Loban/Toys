@@ -102,8 +102,8 @@ class Review {
   }
 }
 
-// const MESSAGE_URI = 'http://localhost:3000/messages/';
-const MESSAGE_URI = 'https://toys-goods.herokuapp.com/api/messages';
+const MESSAGE_URI = 'http://localhost:3000/messages/';
+// const MESSAGE_URI = 'https://toys-goods.herokuapp.com/api/messages';
 
 let contentMessage = document.querySelector('.message-content');
 let contentUserName = document.querySelector('h5');
