@@ -151,7 +151,7 @@ const getinfo = async () => {
 
 
 const renderMessages = async () => {
-  const messages = await getResourse(`${MESSAGE_URI}`);
+//   const messages = await getResourse(`${MESSAGE_URI}`);
   const containerMessages = document.querySelector('.message_container');
   containerMessages.innerHTML = '';
 
