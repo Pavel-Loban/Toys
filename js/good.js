@@ -45,6 +45,13 @@ const renderMoreInfoGood = async () => {
 renderMoreInfoGood();
 
 
+document.querySelector('.item_good2 ').addEventListener('click', (e) => {
+  if (e.target.classList.contains('item__btn_add')) {
+    postDataGood(e);
+  }
+
+});
+
 moreImg.addEventListener('click', (e) => {
   let images = document.querySelectorAll('.image');
 
@@ -152,30 +159,30 @@ const getinfo = async () => {
 
 const renderMessages = async () => {
 //   const messages = await getResourse(`${MESSAGE_URI}`);
-  const containerMessages = document.querySelector('.message_container');
-  containerMessages.innerHTML = '';
+//   const containerMessages = document.querySelector('.message_container');
+//   containerMessages.innerHTML = '';
 
-messages &&  messages.reverse().forEach((elem) => {
-    if (elem.countid === itemId) {
+// messages &&  messages.reverse().forEach((elem) => {
+//     if (elem.countid === itemId) {
 
-      containerMessages.innerHTML += `
-        <div class="message-item">
-        <div class="message-avatar">
-            <figure class="avatar">
-            </figure>
-            <div>
-                <h5> ${elem.selector1}</h5>
-                <div class="date">${elem.datemessage}</div>
-                <div class="time">${elem.timemessage}</div>
-            </div>
-        </div>
-        <div class="message-content">
-            ${elem.selector2}
-        </div>
-    </div>
-        `;
-    }
-  });
+//       containerMessages.innerHTML += `
+//         <div class="message-item">
+//         <div class="message-avatar">
+//             <figure class="avatar">
+//             </figure>
+//             <div>
+//                 <h5> ${elem.selector1}</h5>
+//                 <div class="date">${elem.datemessage}</div>
+//                 <div class="time">${elem.timemessage}</div>
+//             </div>
+//         </div>
+//         <div class="message-content">
+//             ${elem.selector2}
+//         </div>
+//     </div>
+//         `;
+//     }
+//   });
 };
 renderMessages();
 
